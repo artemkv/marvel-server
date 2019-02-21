@@ -9,6 +9,8 @@ import net.artemkv.marvelserver.marvelconnector.IntegrationException;
 import net.artemkv.marvelserver.marvelconnector.TimeoutException;
 import net.artemkv.marvelserver.repositories.CreatorRepository;
 import net.artemkv.marvelserver.repositories.UpdateStatusRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -17,6 +19,8 @@ import java.util.Date;
 @Component
 public class LocalDbUpdater {
     // TODO: use status to indicate service readiness / health
+
+    private static final Logger logger = LoggerFactory.getLogger(LocalDbUpdater.class);
 
     private MarvelService marvelApiService;
     private CreatorRepository creatorRepository;
@@ -45,6 +49,7 @@ public class LocalDbUpdater {
         UpdateStatus updateStatus = updateStatusRepository.findById(1)
             .orElse(new UpdateStatus(1, new Date(Long.MIN_VALUE)));
 
+        logger.debug("Updating creators from Marvel...");
         try {
             boolean hasMore = true;
             int offset = 0;
@@ -57,8 +62,7 @@ public class LocalDbUpdater {
                     if (creator.getModified().after(newLastSyncDate)) {
                         newLastSyncDate = creator.getModified();
                     }
-                    // log
-                    System.out.println(creator.getFullName()); // TODO: replace with log
+                    logger.trace("Found creator: " + creator.getFullName());
                     // save into local db
                     CreatorModel creatorModel = new CreatorModel(creator);
                     creatorRepository.save(creatorModel);
@@ -71,7 +75,9 @@ public class LocalDbUpdater {
                 offset = result.getNewOffset();
 
                 if (hasMore) {
-                    System.out.println("has more starting from " + offset); // TODO: replace with log
+                    logger.debug("Marvel has more creators starting from " + offset);
+                } else {
+                    logger.debug("Done updating creators from Marvel");
                 }
             }
         } catch (IntegrationException e) {

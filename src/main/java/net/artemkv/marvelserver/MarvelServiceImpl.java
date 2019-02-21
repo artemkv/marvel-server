@@ -5,12 +5,15 @@ import net.artemkv.marvelserver.marvelconnector.GetCreatorsResult;
 import net.artemkv.marvelserver.marvelconnector.IntegrationException;
 import net.artemkv.marvelserver.marvelconnector.MarvelApiRepository;
 import net.artemkv.marvelserver.marvelconnector.TimeoutException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
 @Service
 public class MarvelServiceImpl implements MarvelService {
+    private static final Logger logger = LoggerFactory.getLogger(MarvelServiceImpl.class);
     private final MarvelApiRepository repository;
     private final MarvelServiceProperties properties;
 
@@ -35,24 +38,25 @@ public class MarvelServiceImpl implements MarvelService {
         while (retriesLeft > 0) {
             try {
                 retriesLeft--;
-                result = repository.getCreators(modifiedSince, offset);
+                logger.debug(String.format(
+                    "Requesting creators modified since %s, at offset %d",
+                    modifiedSince.toString(),
+                    offset));
+                return repository.getCreators(modifiedSince, offset);
             } catch (TimeoutException e) {
-                // TODO: log
+                logger.error("Requesting creators timed out", e);
                 if (retriesLeft == 0) {
                     throw e;
                 }
-
-                // TODO: log retrying
-                System.out.println("Retrying, retries left: " + retriesLeft);
+                logger.debug("Retrying, retries left: " + retriesLeft);
             } catch (ExternalServiceUnavailableException e) {
-                // TODO: log
+                logger.error("Requesting creators failed", e);
                 if (retriesLeft == 0) {
                     throw e;
                 }
-                // TODO: log retrying
-                System.out.println("Retrying, retries left: " + retriesLeft);
+                logger.debug("Retrying, retries left: " + retriesLeft);
             }
         }
-        return result;
+        throw new IllegalStateException("Impossible state");
     }
 }
