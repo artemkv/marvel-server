@@ -52,44 +52,49 @@ public class LocalDbUpdater {
 
         logger.debug("Updating creators from Marvel...");
         try {
+            Date lastSyncDate = updateStatus.getLastSyncDate();
+            Date newLastSyncDate = updateStatus.getLastSyncDate();
             boolean hasMore = true;
             int offset = 0;
             while (hasMore) {
-                GetCreatorsResult result =
-                    marvelApiService.getCreators(updateStatus.getLastSyncDate(), offset);
-                Date newLastSyncDate = updateStatus.getLastSyncDate();
+                GetCreatorsResult result = marvelApiService.getCreators(lastSyncDate, offset);
                 for (Creator creator : result.getCreators()) {
-                    // update last synced date
-                    if (creator.getModified().after(newLastSyncDate)) {
-                        newLastSyncDate = creator.getModified();
-                    }
                     logger.trace("Found creator: " + creator.getFullName());
                     // save into local db
                     CreatorModel creatorModel = new CreatorModel(creator);
                     creatorRepository.save(creatorModel);
+                    // update last synced date
+                    if (creator.getModified().after(newLastSyncDate)) {
+                        // done with that date, save it
+                        updateStatus.setLastSyncDate(newLastSyncDate);
+                        updateStatusRepository.save(updateStatus);
+                        // use the newer value
+                        newLastSyncDate = creator.getModified();
+                    }
                 }
-                // save last sync date
-                updateStatus.setLastSyncDate(newLastSyncDate);
-                updateStatusRepository.save(updateStatus);
-
                 hasMore = result.hasMore();
                 offset = result.getNewOffset();
-
                 if (hasMore) {
                     logger.debug("Marvel has more creators starting from " + offset);
                 } else {
                     logger.debug("Done updating creators from Marvel");
                 }
             }
-        } catch (IntegrationException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        } catch (ExternalServiceUnavailableException e) {
-            e.printStackTrace();
-        }
+            // save last sync date - final value
+            updateStatus.setLastSyncDate(newLastSyncDate);
+            updateStatusRepository.save(updateStatus);
 
-        setLocalDatabaseState(LocalDatabaseState.UP_TO_DATE);
+            setLocalDatabaseState(LocalDatabaseState.UP_TO_DATE);
+        } catch (IntegrationException e) {
+            logger.error("Failed to update creators from Marvel", e);
+            throw new IllegalStateException("Failed to update creators from Marvel");
+        } catch (TimeoutException e) {
+            logger.error("Failed to update creators from Marvel", e);
+            throw new IllegalStateException("Failed to update creators from Marvel");
+        } catch (ExternalServiceUnavailableException e) {
+            logger.error("Failed to update creators from Marvel", e);
+            throw new IllegalStateException("Failed to update creators from Marvel");
+        }
     }
 
     public synchronized LocalDatabaseState getLocalDatabaseState() {
