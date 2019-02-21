@@ -2,6 +2,7 @@ package net.artemkv.marvelserver.marvelconnector;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import okhttp3.OkHttpClient;
 import org.springframework.stereotype.Component;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -13,6 +14,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Provides an access to Marvel API.
@@ -45,9 +47,15 @@ public class MarvelApiRepository {
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss-SSSX")
                 .create();
 
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(properties.getConnectionTimeout(), TimeUnit.SECONDS)
+                .readTimeout(properties.getReadTimeout(), TimeUnit.SECONDS)
+                .build();
+
             Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(properties.getUrl())
                 .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(okHttpClient)
                 .build();
 
             String apiKey = properties.getPublicKey();

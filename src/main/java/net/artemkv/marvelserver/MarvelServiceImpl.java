@@ -41,13 +41,16 @@ public class MarvelServiceImpl implements MarvelService {
                 if (retriesLeft == 0) {
                     throw e;
                 }
+
                 // TODO: log retrying
+                System.out.println("Retrying, retries left: " + retriesLeft);
             } catch (ExternalServiceUnavailableException e) {
                 // TODO: log
                 if (retriesLeft == 0) {
                     throw e;
                 }
                 // TODO: log retrying
+                System.out.println("Retrying, retries left: " + retriesLeft);
             }
         }
         return result;

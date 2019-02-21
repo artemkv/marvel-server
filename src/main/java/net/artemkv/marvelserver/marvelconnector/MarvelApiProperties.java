@@ -12,6 +12,8 @@ public class MarvelApiProperties {
     private int pageSize = 20;
     private String publicKey;
     private String privateKey;
+    private int connectionTimeout = 20;
+    private int readTimeout = 20;
 
     public String getUrl() {
         return url;
@@ -43,5 +45,21 @@ public class MarvelApiProperties {
 
     public void setPrivateKey(String privateKey) {
         this.privateKey = privateKey;
+    }
+
+    public int getConnectionTimeout() {
+        return connectionTimeout;
+    }
+
+    public void setConnectionTimeout(int connectionTimeout) {
+        this.connectionTimeout = connectionTimeout;
+    }
+
+    public int getReadTimeout() {
+        return readTimeout;
+    }
+
+    public void setReadTimeout(int readTimeout) {
+        this.readTimeout = readTimeout;
     }
 }
