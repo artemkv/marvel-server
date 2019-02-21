@@ -4,7 +4,6 @@ import net.artemkv.marvelserver.MarvelConnector.Creator;
 import net.artemkv.marvelserver.MarvelConnector.ExternalServiceUnavailableException;
 import net.artemkv.marvelserver.MarvelConnector.GetCreatorsResult;
 import net.artemkv.marvelserver.MarvelConnector.IntegrationException;
-import net.artemkv.marvelserver.MarvelConnector.MarvelApiRepository;
 import net.artemkv.marvelserver.MarvelConnector.TimeoutException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,9 +16,9 @@ public class MarvelServerApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(MarvelServerApplication.class, args);
 
-        MarvelApiRepository repo = context.getBean(MarvelApiRepository.class);
+        MarvelService svc = context.getBean(MarvelService.class);
         try {
-            GetCreatorsResult result = repo.getCreators(new Date(Long.MIN_VALUE), 0);
+            GetCreatorsResult result = svc.getCreators(new Date(Long.MIN_VALUE), 0);
             for (Creator c : result.getCreators()) {
                 System.out.println(c.getFullName());
             }
