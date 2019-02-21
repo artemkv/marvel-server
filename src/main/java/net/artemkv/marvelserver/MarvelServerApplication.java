@@ -1,10 +1,10 @@
 package net.artemkv.marvelserver;
 
-import net.artemkv.marvelserver.MarvelConnector.Creator;
-import net.artemkv.marvelserver.MarvelConnector.ExternalServiceUnavailableException;
-import net.artemkv.marvelserver.MarvelConnector.GetCreatorsResult;
-import net.artemkv.marvelserver.MarvelConnector.IntegrationException;
-import net.artemkv.marvelserver.MarvelConnector.TimeoutException;
+import net.artemkv.marvelserver.marvelconnector.Creator;
+import net.artemkv.marvelserver.marvelconnector.ExternalServiceUnavailableException;
+import net.artemkv.marvelserver.marvelconnector.GetCreatorsResult;
+import net.artemkv.marvelserver.marvelconnector.IntegrationException;
+import net.artemkv.marvelserver.marvelconnector.TimeoutException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;

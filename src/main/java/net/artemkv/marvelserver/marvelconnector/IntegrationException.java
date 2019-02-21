@@ -1,4 +1,4 @@
-package net.artemkv.marvelserver.MarvelConnector;
+package net.artemkv.marvelserver.marvelconnector;
 
 /**
  * Thrown when the integration is broken, for example, due to misconfiguration.

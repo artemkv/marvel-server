@@ -1,4 +1,4 @@
-package net.artemkv.marvelserver.MarvelConnector;
+package net.artemkv.marvelserver.marvelconnector;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,4 +1,4 @@
-package net.artemkv.marvelserver.MarvelConnector;
+package net.artemkv.marvelserver.marvelconnector;
 
 /**
  * Thrown when the external service call times out.
