@@ -4,27 +4,35 @@ import net.artemkv.marvelserver.domain.CreatorModel;
 import java.util.List;
 
 public class GetCreatorsResponse {
-    private int offset;
-    private int limit;
+    private int pageNumber;
+    private int pageSize;
     private int total;
     private int count;
     private List<CreatorModel> results;
 
     public GetCreatorsResponse(
-        int offset, int limit, int total, int count, List<CreatorModel> results) {
-        this.offset = offset;
-        this.limit = limit;
+        int pageNumber, int pageSize, int total, int count, List<CreatorModel> results) {
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
         this.total = total;
         this.count = count;
         this.results = results;
     }
 
-    public int getOffset() {
-        return offset;
+    public int getPageNumber() {
+        return pageNumber;
     }
 
-    public int getLimit() {
-        return limit;
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 
     public int getTotal() {

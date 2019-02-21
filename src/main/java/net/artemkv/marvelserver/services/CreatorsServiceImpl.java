@@ -2,6 +2,7 @@ package net.artemkv.marvelserver.services;
 
 import net.artemkv.marvelserver.domain.CreatorModel;
 import net.artemkv.marvelserver.repositories.CreatorRepository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +19,10 @@ public class CreatorsServiceImpl implements CreatorsService {
     }
 
     @Override
-    public List<CreatorModel> getCreators() {
+    public List<CreatorModel> getCreators(int pageNumber, int pageSize) {
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         ArrayList<CreatorModel> creators = new ArrayList<>();
-        creatorRepository.findAll().forEach(creators::add);
+        creatorRepository.findAll(pageRequest).forEach(creators::add);
         return creators;
     }
 }

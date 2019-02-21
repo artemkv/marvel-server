@@ -1,7 +1,7 @@
 package net.artemkv.marvelserver.repositories;
 
 import net.artemkv.marvelserver.domain.CreatorModel;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface CreatorRepository extends CrudRepository<CreatorModel, Integer> {
+public interface CreatorRepository extends PagingAndSortingRepository<CreatorModel, Integer> {
 }
