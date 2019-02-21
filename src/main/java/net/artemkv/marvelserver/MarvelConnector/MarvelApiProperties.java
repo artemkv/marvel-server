@@ -16,6 +16,7 @@ public class MarvelApiProperties {
     public String getUrl() {
         return url;
     }
+
     public void setUrl(String url) {
         this.url = url;
     }
@@ -23,6 +24,7 @@ public class MarvelApiProperties {
     public int getPageSize() {
         return pageSize;
     }
+
     public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
     }
@@ -30,6 +32,7 @@ public class MarvelApiProperties {
     public String getPublicKey() {
         return publicKey;
     }
+
     public void setPublicKey(String publicKey) {
         this.publicKey = publicKey;
     }
@@ -37,6 +40,7 @@ public class MarvelApiProperties {
     public String getPrivateKey() {
         return privateKey;
     }
+
     public void setPrivateKey(String privateKey) {
         this.privateKey = privateKey;
     }

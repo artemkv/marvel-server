@@ -5,18 +5,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreatorDataContainer {
+class CreatorDataContainer {
     private int offset;
     private int limit;
     private int total;
     private int count;
-    private List<Creator> results;
+    private List<CreatorData> results;
 
     @JsonProperty("results")
-    public List<Creator> getResults() {
+    public List<CreatorData> getResults() {
         return results;
     }
-    public void setResults(List<Creator> results) {
+    public void setResults(List<CreatorData> results) {
         this.results = results;
     }
 

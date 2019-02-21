@@ -6,7 +6,7 @@ import retrofit2.http.Query;
 
 import java.util.Date;
 
-public interface MarvelApi {
+interface MarvelApi {
     @GET("/v1/public/creators")
     Call<CreatorDataWrapper> listCreators(
         @Query("limit") int limit,

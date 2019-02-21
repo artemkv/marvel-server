@@ -1,85 +1,43 @@
 package net.artemkv.marvelserver.MarvelConnector;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Creator {
-    private static class ComicsData {
-        @JsonProperty("available")
-        private int available;
-    }
-    private static class SeriesData {
-        @JsonProperty("available")
-        private int available;
-    }
+/**
+ * Represents the creator.
+ */
+public interface Creator {
+    /**
+     * Returns the creator id.
+     *
+     * @return id of the creator.
+     */
+    int getId();
 
-    private int id;
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private String fullName;
-    private Date modified;
+    /**
+     * Returns the creator's full name.
+     *
+     * @return full name of the creator.
+     */
+    String getFullName();
 
-    @JsonProperty("comics")
-    private ComicsData comics;
-    @JsonProperty("series")
-    private ComicsData series;
+    /**
+     * Returns the date the creator data was last modified.
+     *
+     * @return date the creator data was last modified.
+     */
+    Date getModified();
 
-    @JsonProperty("id")
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
+    /**
+     * Returns number of comics created by the creator.
+     *
+     * @return number of comics created by the creator.
+     */
+    int getComicsTotal();
 
-    @JsonProperty("firstName")
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    @JsonProperty("middleName")
-    public String getMiddleName() {
-        return middleName;
-    }
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    @JsonProperty("lastName")
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    @JsonProperty("fullName")
-    public String getFullName() {
-        return fullName;
-    }
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    @JsonProperty("modified")
-    public Date getModified() {
-        return modified;
-    }
-    public void setModified(Date modified) {
-        this.modified = modified;
-    }
-
-    public int getComicsTotal() {
-        return comics.available;
-    }
-
-    public int getSeriesTotal() {
-        return series.available;
-    }
+    /**
+     * Returns number of series created by the creator.
+     *
+     * @return number of series created by the creator.
+     */
+    int getSeriesTotal();
 }
