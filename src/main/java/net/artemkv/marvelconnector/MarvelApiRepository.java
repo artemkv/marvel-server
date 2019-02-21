@@ -1,4 +1,4 @@
-package net.artemkv.marvelserver.marvelconnector;
+package net.artemkv.marvelconnector;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

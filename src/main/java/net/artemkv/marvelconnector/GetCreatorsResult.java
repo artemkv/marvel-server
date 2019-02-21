@@ -1,4 +1,4 @@
-package net.artemkv.marvelserver.marvelconnector;
+package net.artemkv.marvelconnector;
 
 import java.util.List;
 

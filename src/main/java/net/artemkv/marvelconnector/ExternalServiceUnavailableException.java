@@ -1,4 +1,4 @@
-package net.artemkv.marvelserver.marvelconnector;
+package net.artemkv.marvelconnector;
 
 /**
  * Thrown when the external service could not be accessed.

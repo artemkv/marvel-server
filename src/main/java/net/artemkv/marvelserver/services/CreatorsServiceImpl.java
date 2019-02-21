@@ -1,4 +1,4 @@
-package net.artemkv.marvelserver;
+package net.artemkv.marvelserver.services;
 
 import net.artemkv.marvelserver.domain.CreatorModel;
 import net.artemkv.marvelserver.repositories.CreatorRepository;

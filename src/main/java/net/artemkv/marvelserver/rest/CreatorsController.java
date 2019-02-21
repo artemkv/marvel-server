@@ -1,6 +1,6 @@
 package net.artemkv.marvelserver.rest;
 
-import net.artemkv.marvelserver.CreatorsService;
+import net.artemkv.marvelserver.services.CreatorsService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

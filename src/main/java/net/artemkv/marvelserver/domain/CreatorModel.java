@@ -1,6 +1,6 @@
 package net.artemkv.marvelserver.domain;
 
-import net.artemkv.marvelserver.marvelconnector.Creator;
+import net.artemkv.marvelconnector.Creator;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
