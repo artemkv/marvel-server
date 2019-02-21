@@ -11,16 +11,17 @@ import net.artemkv.marvelserver.repositories.CreatorRepository;
 import net.artemkv.marvelserver.repositories.UpdateStatusRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-// TODO: make singleton
 @Component
+@Scope("singleton")
 public class LocalDbUpdater {
-    // TODO: use status to indicate service readiness / health
-
     private static final Logger logger = LoggerFactory.getLogger(LocalDbUpdater.class);
+
+    LocalDatabaseState localDatabaseState = LocalDatabaseState.OUT_OF_DATE;
 
     private MarvelService marvelApiService;
     private CreatorRepository creatorRepository;
@@ -87,5 +88,15 @@ public class LocalDbUpdater {
         } catch (ExternalServiceUnavailableException e) {
             e.printStackTrace();
         }
+
+        setLocalDatabaseState(LocalDatabaseState.UP_TO_DATE);
+    }
+
+    public synchronized LocalDatabaseState getLocalDatabaseState() {
+        return localDatabaseState;
+    }
+
+    private synchronized void setLocalDatabaseState(LocalDatabaseState localDatabaseState) {
+        this.localDatabaseState = localDatabaseState;
     }
 }

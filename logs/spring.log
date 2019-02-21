@@ -153,3 +153,277 @@
 2019-02-21 16:51:07.149  INFO 21564 --- [http-nio-127.0.0.1-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2019-02-21 16:51:07.773 DEBUG 21564 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 800
 2019-02-21 16:51:07.773 DEBUG 21564 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 800
+2019-02-21 17:14:54.887  INFO 28196 --- [main] n.a.m.MarvelServerApplication            : Starting MarvelServerApplication on LAPTOP-BLB0FEU4 with PID 28196 (D:\github\blueorange\marvel-server\target\classes started by Artem in D:\github\blueorange\marvel-server)
+2019-02-21 17:14:54.890 DEBUG 28196 --- [main] n.a.m.MarvelServerApplication            : Running with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE
+2019-02-21 17:14:54.890  INFO 28196 --- [main] n.a.m.MarvelServerApplication            : No active profile set, falling back to default profiles: default
+2019-02-21 17:14:55.611  INFO 28196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-02-21 17:14:55.661  INFO 28196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44ms. Found 2 repository interfaces.
+2019-02-21 17:14:56.045  INFO 28196 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$512227c5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-21 17:14:56.591  INFO 28196 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-02-21 17:14:56.615  INFO 28196 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-21 17:14:56.615  INFO 28196 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-02-21 17:14:56.624  INFO 28196 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\java\jdk-10.0.2\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;c:\java\jdk-10.0.2\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\nodejs\;C:\HashiCorp\Vagrant\bin;C:\Program Files\Calibre2\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\4.0\bin;C:\Program Files\PuTTY\;C:\Program Files\Amazon\AWSCLI\bin\;C:\Users\Artem\.windows-build-tools\python27\;C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;D:\github\kaboom\kaboom-events-service\kaboom.services.events\node_modules\windows-build-tools\node_modules\.bin;D:\github\kaboom\kaboom-events-service\kaboom.services.events\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;c:\java\jdk-10.0.2\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\nodejs\;C:\HashiCorp\Vagrant\bin;C:\Program Files\Calibre2\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\4.0\bin;C:\Users\Artem\AppData\Local\Microsoft\WindowsApps;C:\Users\Artem\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Artem\AppData\Roaming\npm;C:\Users\Artem\AppData\Local\Programs\Fiddler;C:\Program Files\Docker Toolbox;.]
+2019-02-21 17:14:56.692  INFO 28196 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-21 17:14:57.005  INFO 28196 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-02-21 17:14:57.177  INFO 28196 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-02-21 17:14:57.234  INFO 28196 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-02-21 17:14:57.306  INFO 28196 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-02-21 17:14:57.309  INFO 28196 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-02-21 17:14:57.443  INFO 28196 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-02-21 17:14:57.614  INFO 28196 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2019-02-21 17:14:58.278  INFO 28196 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-02-21 17:14:58.864  INFO 28196 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-21 17:14:58.905  WARN 28196 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-02-21 17:14:59.198  INFO 28196 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoint(s) beneath base path '/actuator'
+2019-02-21 17:14:59.269  INFO 28196 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-02-21 17:14:59.272  INFO 28196 --- [main] n.a.m.MarvelServerApplication            : Started MarvelServerApplication in 4.616 seconds (JVM running for 8.464)
+2019-02-21 17:14:59.325 DEBUG 28196 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Updating creators from Marvel...
+2019-02-21 17:14:59.325 DEBUG 28196 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 0
+2019-02-21 17:15:03.379 DEBUG 28196 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 100
+2019-02-21 17:15:03.379 DEBUG 28196 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 100
+2019-02-21 17:15:05.820  INFO 28196 --- [http-nio-127.0.0.1-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-21 17:15:06.954 DEBUG 28196 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 200
+2019-02-21 17:15:06.955 DEBUG 28196 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 200
+2019-02-21 17:15:09.560 DEBUG 28196 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 300
+2019-02-21 17:15:09.560 DEBUG 28196 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 300
+2019-02-21 17:15:12.160 DEBUG 28196 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 400
+2019-02-21 17:15:12.160 DEBUG 28196 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 400
+2019-02-21 17:15:15.525 DEBUG 28196 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 500
+2019-02-21 17:15:15.525 DEBUG 28196 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 500
+2019-02-21 17:15:17.682 DEBUG 28196 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 600
+2019-02-21 17:15:17.682 DEBUG 28196 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 600
+2019-02-21 17:15:19.409 DEBUG 28196 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 700
+2019-02-21 17:15:19.409 DEBUG 28196 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 700
+2019-02-21 17:15:21.558 DEBUG 28196 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 800
+2019-02-21 17:15:21.558 DEBUG 28196 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 800
+2019-02-21 17:15:24.169 DEBUG 28196 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 900
+2019-02-21 17:15:24.169 DEBUG 28196 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 900
+2019-02-21 17:16:01.808  INFO 16520 --- [main] n.a.m.MarvelServerApplication            : Starting MarvelServerApplication on LAPTOP-BLB0FEU4 with PID 16520 (D:\github\blueorange\marvel-server\target\classes started by Artem in D:\github\blueorange\marvel-server)
+2019-02-21 17:16:01.810 DEBUG 16520 --- [main] n.a.m.MarvelServerApplication            : Running with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE
+2019-02-21 17:16:01.811  INFO 16520 --- [main] n.a.m.MarvelServerApplication            : No active profile set, falling back to default profiles: default
+2019-02-21 17:16:02.585  INFO 16520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-02-21 17:16:02.650  INFO 16520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57ms. Found 2 repository interfaces.
+2019-02-21 17:16:03.042  INFO 16520 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ee5ffd25] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-21 17:16:03.636  INFO 16520 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-02-21 17:16:03.659  INFO 16520 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-21 17:16:03.659  INFO 16520 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-02-21 17:16:03.669  INFO 16520 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\java\jdk-10.0.2\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;c:\java\jdk-10.0.2\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\nodejs\;C:\HashiCorp\Vagrant\bin;C:\Program Files\Calibre2\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\4.0\bin;C:\Program Files\PuTTY\;C:\Program Files\Amazon\AWSCLI\bin\;C:\Users\Artem\.windows-build-tools\python27\;C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;D:\github\kaboom\kaboom-events-service\kaboom.services.events\node_modules\windows-build-tools\node_modules\.bin;D:\github\kaboom\kaboom-events-service\kaboom.services.events\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;c:\java\jdk-10.0.2\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\nodejs\;C:\HashiCorp\Vagrant\bin;C:\Program Files\Calibre2\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\4.0\bin;C:\Users\Artem\AppData\Local\Microsoft\WindowsApps;C:\Users\Artem\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Artem\AppData\Roaming\npm;C:\Users\Artem\AppData\Local\Programs\Fiddler;C:\Program Files\Docker Toolbox;.]
+2019-02-21 17:16:03.761  INFO 16520 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-21 17:16:04.107  INFO 16520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-02-21 17:16:04.329  INFO 16520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-02-21 17:16:04.386  INFO 16520 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-02-21 17:16:04.453  INFO 16520 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-02-21 17:16:04.455  INFO 16520 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-02-21 17:16:04.611  INFO 16520 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-02-21 17:16:04.773  INFO 16520 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2019-02-21 17:16:05.465  INFO 16520 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-02-21 17:16:06.038  INFO 16520 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-21 17:16:06.083  WARN 16520 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-02-21 17:16:06.431  INFO 16520 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoint(s) beneath base path '/actuator'
+2019-02-21 17:16:06.511  INFO 16520 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-02-21 17:16:06.513  INFO 16520 --- [main] n.a.m.MarvelServerApplication            : Started MarvelServerApplication in 4.973 seconds (JVM running for 7.964)
+2019-02-21 17:16:06.574 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Updating creators from Marvel...
+2019-02-21 17:16:06.575 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 0
+2019-02-21 17:16:06.602  INFO 16520 --- [http-nio-127.0.0.1-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-21 17:16:08.981 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 100
+2019-02-21 17:16:08.982 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 100
+2019-02-21 17:16:10.613 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 200
+2019-02-21 17:16:10.613 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 200
+2019-02-21 17:16:12.385 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 300
+2019-02-21 17:16:12.386 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 300
+2019-02-21 17:16:13.537 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 400
+2019-02-21 17:16:13.537 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 400
+2019-02-21 17:16:15.684 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 500
+2019-02-21 17:16:15.684 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 500
+2019-02-21 17:16:17.122 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 600
+2019-02-21 17:16:17.122 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 600
+2019-02-21 17:16:18.139 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 700
+2019-02-21 17:16:18.139 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 700
+2019-02-21 17:16:19.260 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 800
+2019-02-21 17:16:19.260 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 800
+2019-02-21 17:16:20.408 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 900
+2019-02-21 17:16:20.408 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 900
+2019-02-21 17:16:21.541 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1000
+2019-02-21 17:16:21.542 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1000
+2019-02-21 17:16:38.085 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1100
+2019-02-21 17:16:38.085 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1100
+2019-02-21 17:16:53.328 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1200
+2019-02-21 17:16:53.329 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1200
+2019-02-21 17:17:02.201 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1300
+2019-02-21 17:17:02.202 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1300
+2019-02-21 17:17:11.309 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1400
+2019-02-21 17:17:11.309 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1400
+2019-02-21 17:17:26.001 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1500
+2019-02-21 17:17:26.002 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1500
+2019-02-21 17:17:38.744 DEBUG 16520 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1600
+2019-02-21 17:17:38.745 DEBUG 16520 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1600
+2019-02-21 17:17:54.559  INFO 28168 --- [main] n.a.m.MarvelServerApplication            : Starting MarvelServerApplication on LAPTOP-BLB0FEU4 with PID 28168 (D:\github\blueorange\marvel-server\target\classes started by Artem in D:\github\blueorange\marvel-server)
+2019-02-21 17:17:54.562 DEBUG 28168 --- [main] n.a.m.MarvelServerApplication            : Running with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE
+2019-02-21 17:17:54.562  INFO 28168 --- [main] n.a.m.MarvelServerApplication            : No active profile set, falling back to default profiles: default
+2019-02-21 17:17:55.302  INFO 28168 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-02-21 17:17:55.360  INFO 28168 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50ms. Found 2 repository interfaces.
+2019-02-21 17:17:55.769  INFO 28168 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b8bda1b4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-21 17:17:56.338  INFO 28168 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-02-21 17:17:56.362  INFO 28168 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-21 17:17:56.362  INFO 28168 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-02-21 17:17:56.371  INFO 28168 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\java\jdk-10.0.2\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;c:\java\jdk-10.0.2\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\nodejs\;C:\HashiCorp\Vagrant\bin;C:\Program Files\Calibre2\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\4.0\bin;C:\Program Files\PuTTY\;C:\Program Files\Amazon\AWSCLI\bin\;C:\Users\Artem\.windows-build-tools\python27\;C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;D:\github\kaboom\kaboom-events-service\kaboom.services.events\node_modules\windows-build-tools\node_modules\.bin;D:\github\kaboom\kaboom-events-service\kaboom.services.events\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;c:\java\jdk-10.0.2\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\nodejs\;C:\HashiCorp\Vagrant\bin;C:\Program Files\Calibre2\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\4.0\bin;C:\Users\Artem\AppData\Local\Microsoft\WindowsApps;C:\Users\Artem\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Artem\AppData\Roaming\npm;C:\Users\Artem\AppData\Local\Programs\Fiddler;C:\Program Files\Docker Toolbox;.]
+2019-02-21 17:17:56.448  INFO 28168 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-21 17:17:56.809  INFO 28168 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-02-21 17:17:56.965  INFO 28168 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-02-21 17:17:57.018  INFO 28168 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-02-21 17:17:57.084  INFO 28168 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-02-21 17:17:57.086  INFO 28168 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-02-21 17:17:57.217  INFO 28168 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-02-21 17:17:57.361  INFO 28168 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2019-02-21 17:17:57.938  INFO 28168 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-02-21 17:17:58.494  INFO 28168 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-21 17:17:58.536  WARN 28168 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-02-21 17:17:58.823  INFO 28168 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoint(s) beneath base path '/actuator'
+2019-02-21 17:17:58.914  INFO 28168 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-02-21 17:17:58.917  INFO 28168 --- [main] n.a.m.MarvelServerApplication            : Started MarvelServerApplication in 4.609 seconds (JVM running for 7.583)
+2019-02-21 17:17:58.991 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Updating creators from Marvel...
+2019-02-21 17:17:58.991 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 0
+2019-02-21 17:17:59.091  INFO 28168 --- [http-nio-127.0.0.1-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-21 17:18:00.646 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 100
+2019-02-21 17:18:00.646 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 100
+2019-02-21 17:18:02.121 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 200
+2019-02-21 17:18:02.121 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 200
+2019-02-21 17:18:03.622 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 300
+2019-02-21 17:18:03.622 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 300
+2019-02-21 17:18:04.929 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 400
+2019-02-21 17:18:04.929 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 400
+2019-02-21 17:18:06.416 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 500
+2019-02-21 17:18:06.416 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 500
+2019-02-21 17:18:07.698 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 600
+2019-02-21 17:18:07.698 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 600
+2019-02-21 17:18:08.929 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 700
+2019-02-21 17:18:08.929 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 700
+2019-02-21 17:18:10.265 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 800
+2019-02-21 17:18:10.265 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 800
+2019-02-21 17:18:12.169 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 900
+2019-02-21 17:18:12.170 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 900
+2019-02-21 17:18:13.440 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1000
+2019-02-21 17:18:13.441 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1000
+2019-02-21 17:18:14.656 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1100
+2019-02-21 17:18:14.657 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1100
+2019-02-21 17:18:15.848 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1200
+2019-02-21 17:18:15.848 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1200
+2019-02-21 17:18:16.768 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1300
+2019-02-21 17:18:16.768 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1300
+2019-02-21 17:18:17.738 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1400
+2019-02-21 17:18:17.738 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1400
+2019-02-21 17:18:18.997 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1500
+2019-02-21 17:18:18.997 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1500
+2019-02-21 17:18:20.055 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1600
+2019-02-21 17:18:20.055 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1600
+2019-02-21 17:18:21.268 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1700
+2019-02-21 17:18:21.268 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1700
+2019-02-21 17:18:33.351 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1800
+2019-02-21 17:18:33.351 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1800
+2019-02-21 17:18:45.140 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 1900
+2019-02-21 17:18:45.141 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 1900
+2019-02-21 17:18:56.386 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 2000
+2019-02-21 17:18:56.386 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 2000
+2019-02-21 17:19:06.228 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 2100
+2019-02-21 17:19:06.228 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 2100
+2019-02-21 17:19:17.363 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 2200
+2019-02-21 17:19:17.364 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 2200
+2019-02-21 17:19:27.133 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 2300
+2019-02-21 17:19:27.133 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 2300
+2019-02-21 17:19:36.633 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 2400
+2019-02-21 17:19:36.633 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 2400
+2019-02-21 17:19:47.951 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 2500
+2019-02-21 17:19:47.951 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 2500
+2019-02-21 17:19:59.537 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 2600
+2019-02-21 17:19:59.537 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 2600
+2019-02-21 17:20:11.461 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 2700
+2019-02-21 17:20:11.461 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 2700
+2019-02-21 17:20:23.759 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 2800
+2019-02-21 17:20:23.759 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 2800
+2019-02-21 17:20:40.498 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 2900
+2019-02-21 17:20:40.499 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2007-01-02 06:00:00.0, at offset 2900
+2019-02-21 17:21:23.637 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 3000
+2019-02-21 17:21:23.638 DEBUG 28168 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since Tue Nov 23 15:55:52 CET 2010, at offset 3000
+2019-02-21 17:21:24.062 DEBUG 28168 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Done updating creators from Marvel
+2019-02-21 17:23:02.336  INFO 27796 --- [main] n.a.m.MarvelServerApplication            : Starting MarvelServerApplication on LAPTOP-BLB0FEU4 with PID 27796 (D:\github\blueorange\marvel-server\target\classes started by Artem in D:\github\blueorange\marvel-server)
+2019-02-21 17:23:02.339 DEBUG 27796 --- [main] n.a.m.MarvelServerApplication            : Running with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE
+2019-02-21 17:23:02.340  INFO 27796 --- [main] n.a.m.MarvelServerApplication            : No active profile set, falling back to default profiles: default
+2019-02-21 17:23:03.049  INFO 27796 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-02-21 17:23:03.102  INFO 27796 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45ms. Found 2 repository interfaces.
+2019-02-21 17:23:03.468  INFO 27796 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7305ef90] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-21 17:23:04.055  INFO 27796 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-02-21 17:23:04.077  INFO 27796 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-21 17:23:04.077  INFO 27796 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-02-21 17:23:04.087  INFO 27796 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\java\jdk-10.0.2\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;c:\java\jdk-10.0.2\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\nodejs\;C:\HashiCorp\Vagrant\bin;C:\Program Files\Calibre2\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\4.0\bin;C:\Program Files\PuTTY\;C:\Program Files\Amazon\AWSCLI\bin\;C:\Users\Artem\.windows-build-tools\python27\;C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;D:\github\kaboom\kaboom-events-service\kaboom.services.events\node_modules\windows-build-tools\node_modules\.bin;D:\github\kaboom\kaboom-events-service\kaboom.services.events\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;c:\java\jdk-10.0.2\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\nodejs\;C:\HashiCorp\Vagrant\bin;C:\Program Files\Calibre2\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\Server\4.0\bin;C:\Users\Artem\AppData\Local\Microsoft\WindowsApps;C:\Users\Artem\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Artem\AppData\Roaming\npm;C:\Users\Artem\AppData\Local\Programs\Fiddler;C:\Program Files\Docker Toolbox;.]
+2019-02-21 17:23:04.157  INFO 27796 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-21 17:23:04.472  INFO 27796 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-02-21 17:23:04.629  INFO 27796 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-02-21 17:23:04.685  INFO 27796 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-02-21 17:23:04.751  INFO 27796 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2019-02-21 17:23:04.753  INFO 27796 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-02-21 17:23:04.893  INFO 27796 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-02-21 17:23:05.042  INFO 27796 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2019-02-21 17:23:05.662  INFO 27796 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-02-21 17:23:06.224  INFO 27796 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-02-21 17:23:06.264  WARN 27796 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-02-21 17:23:06.556  INFO 27796 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoint(s) beneath base path '/actuator'
+2019-02-21 17:23:06.641  INFO 27796 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-02-21 17:23:06.644  INFO 27796 --- [main] n.a.m.MarvelServerApplication            : Started MarvelServerApplication in 4.56 seconds (JVM running for 7.454)
+2019-02-21 17:23:06.710 DEBUG 27796 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Updating creators from Marvel...
+2019-02-21 17:23:06.710 DEBUG 27796 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2010-11-23 15:55:52.0, at offset 0
+2019-02-21 17:23:55.186  INFO 27796 --- [http-nio-127.0.0.1-8080-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-02-21 17:24:07.067 ERROR 27796 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators timed out
+
+net.artemkv.marvelserver.marvelconnector.TimeoutException: Accessing Marvel API timed out
+	at net.artemkv.marvelserver.marvelconnector.MarvelApiRepository.getCreators(MarvelApiRepository.java:97)
+	at net.artemkv.marvelserver.MarvelServiceImpl.getCreators(MarvelServiceImpl.java:45)
+	at net.artemkv.marvelserver.LocalDbUpdater.update(LocalDbUpdater.java:59)
+	at net.artemkv.marvelserver.MarvelServerApplication.main(MarvelServerApplication.java:12)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run(AbstractRunMojo.java:558)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:171)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at okio.Okio$2.read(Okio.java:140)
+	at okio.AsyncTimeout$2.read(AsyncTimeout.java:237)
+	at okio.RealBufferedSource.indexOf(RealBufferedSource.java:354)
+	at okio.RealBufferedSource.readUtf8LineStrict(RealBufferedSource.java:226)
+	at okhttp3.internal.http1.Http1Codec.readHeaderLine(Http1Codec.java:215)
+	at okhttp3.internal.http1.Http1Codec.readResponseHeaders(Http1Codec.java:189)
+	at okhttp3.internal.http.CallServerInterceptor.intercept(CallServerInterceptor.java:88)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:147)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.java:45)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:147)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:121)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.java:93)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:147)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:121)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.java:93)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:147)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.java:126)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:147)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:121)
+	at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:254)
+	at okhttp3.RealCall.execute(RealCall.java:92)
+	at retrofit2.OkHttpCall.execute(OkHttpCall.java:186)
+	at net.artemkv.marvelserver.marvelconnector.MarvelApiRepository.getCreators(MarvelApiRepository.java:74)
+	... 9 common frames omitted
+
+2019-02-21 17:24:07.070 DEBUG 27796 --- [main] n.a.marvelserver.MarvelServiceImpl       : Retrying, retries left: 2
+2019-02-21 17:24:07.070 DEBUG 27796 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2010-11-23 15:55:52.0, at offset 0
+2019-02-21 17:24:13.367 DEBUG 27796 --- [main] net.artemkv.marvelserver.LocalDbUpdater  : Marvel has more creators starting from 100
+2019-02-21 17:24:13.367 DEBUG 27796 --- [main] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since Wed Dec 01 17:28:16 CET 2010, at offset 100
