@@ -4,7 +4,6 @@ import net.artemkv.marvelserver.marvelconnector.ExternalServiceUnavailableExcept
 import net.artemkv.marvelserver.marvelconnector.GetCreatorsResult;
 import net.artemkv.marvelserver.marvelconnector.IntegrationException;
 import net.artemkv.marvelserver.marvelconnector.TimeoutException;
-
 import java.util.Date;
 
 public interface MarvelService {
