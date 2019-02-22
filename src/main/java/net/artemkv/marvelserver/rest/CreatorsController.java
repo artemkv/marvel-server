@@ -70,7 +70,7 @@ public class CreatorsController {
     }
 
     @RequestMapping(
-        method = RequestMethod.POST,
+        method = RequestMethod.PUT,
         value = "/creator/{creatorId}/note",
         consumes = "text/plain",
         produces = "application/json")
@@ -85,5 +85,13 @@ public class CreatorsController {
         }
 
         creatorsService.updateCreatorNote(creatorId, noteText);
+    }
+
+    @RequestMapping(
+        method = RequestMethod.DELETE,
+        value = "/creator/{creatorId}/note",
+        produces = "application/json")
+    public void deleteNote(@PathVariable int creatorId) {
+        creatorsService.deleteCreatorNote(creatorId);
     }
 }

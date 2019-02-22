@@ -15,6 +15,13 @@ public class NoteModel {
     private CreatorModel creator;
     private String text;
 
+    public NoteModel() {
+    }
+
+    public NoteModel(String text) {
+        this.text = text;
+    }
+
     public int getId() {
         return id;
     }

@@ -8,10 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Optional;
 
 @Service
 class CreatorsServiceImpl implements CreatorsService {
@@ -62,15 +60,29 @@ class CreatorsServiceImpl implements CreatorsService {
     }
 
     public void updateCreatorNote(int creatorId, String text) {
+        CreatorModel creator = getCreatorWithCheck(creatorId);
+        if (creator.getNote() != null) {
+            creator.getNote().setText(text);
+        } else {
+            NoteModel note = new NoteModel(text);
+            creator.setNote(note);
+        }
+        creatorRepository.save(creator);
+    }
+
+    public void deleteCreatorNote(int creatorId) {
+        CreatorModel creator = getCreatorWithCheck(creatorId);
+        creator.setNote(null);
+        creatorRepository.save(creator);
+    }
+
+    private CreatorModel getCreatorWithCheck(int creatorId) {
         CreatorModel creator = creatorRepository.findById(creatorId).orElse(null);
         if (creator == null) {
             throw new ResponseStatusException(
                 HttpStatus.BAD_REQUEST,
                 String.format("creator with id %d not found.", creatorId));
         }
-        NoteModel note = new NoteModel();
-        note.setText(text);
-        creator.setNote(note);
-        creatorRepository.save(creator);
+        return creator;
     }
 }
