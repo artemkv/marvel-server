@@ -11,7 +11,7 @@ public class NoteModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToOne
+    @OneToOne(mappedBy = "note")
     private CreatorModel creator;
     private String text;
 

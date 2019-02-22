@@ -5,15 +5,15 @@ import java.util.List;
 /**
  * The view model to be returned by the REST Api
  */
-public class GetCreatorsResponse {
+public class GetListResponse<T> {
     private int pageNumber;
     private int pageSize;
     private int total;
     private int count;
-    private List<CreatorDto> results;
+    private List<T> results;
 
-    public GetCreatorsResponse(
-        int pageNumber, int pageSize, int total, int count, List<CreatorDto> results) {
+    public GetListResponse(
+        int pageNumber, int pageSize, int total, int count, List<T> results) {
         this.pageNumber = pageNumber;
         this.pageSize = pageSize;
         this.total = total;
@@ -45,7 +45,7 @@ public class GetCreatorsResponse {
         return count;
     }
 
-    public List<CreatorDto> getResults() {
+    public List<T> getResults() {
         return results;
     }
 }

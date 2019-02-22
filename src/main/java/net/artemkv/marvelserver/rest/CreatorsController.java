@@ -1,7 +1,7 @@
 package net.artemkv.marvelserver.rest;
 
+import net.artemkv.marvelconnector.Creator;
 import org.springframework.data.domain.Pageable;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
-import javax.security.auth.login.Configuration;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,7 +29,7 @@ public class CreatorsController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/creators", produces = "application/json")
-    public GetCreatorsResponse getCreators(
+    public GetListResponse<CreatorDto> getCreators(
         @RequestParam(value = "fullName", defaultValue = "") String fullName,
         @RequestParam(value = "modifiedSince", defaultValue = "") String modifiedSinceText,
         Pageable pageable) {

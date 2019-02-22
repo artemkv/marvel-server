@@ -4,7 +4,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.Date;
 
 public interface CreatorsService {
-    GetCreatorsResponse getCreators(String fullName, Date modifiedSince, Pageable pageable);
+    GetListResponse<CreatorDto> getCreators(String fullName, Date modifiedSince, Pageable pageable);
 
     void updateCreatorNote(int creatorId, String text);
 

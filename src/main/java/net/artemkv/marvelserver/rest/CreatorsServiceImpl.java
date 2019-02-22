@@ -23,7 +23,7 @@ class CreatorsServiceImpl implements CreatorsService {
     }
 
     @Override
-    public GetCreatorsResponse getCreators(String fullName, Date modifiedSince, Pageable pageable) {
+    public GetListResponse<CreatorDto> getCreators(String fullName, Date modifiedSince, Pageable pageable) {
         boolean filterByFullName = false;
         if (fullName != null && fullName.trim().length() > 0) {
             filterByFullName = true;
@@ -50,7 +50,7 @@ class CreatorsServiceImpl implements CreatorsService {
         ArrayList<CreatorDto> creators = new ArrayList<>();
         page.forEach(x -> creators.add(new CreatorDto(x)));
 
-        GetCreatorsResponse response = new GetCreatorsResponse(
+        GetListResponse<CreatorDto> response = new GetListResponse<CreatorDto>(
             pageable.getPageNumber(),
             pageable.getPageSize(),
             (int) page.getTotalElements(),
@@ -81,7 +81,7 @@ class CreatorsServiceImpl implements CreatorsService {
         if (creator == null) {
             throw new ResponseStatusException(
                 HttpStatus.BAD_REQUEST,
-                String.format("creator with id %d not found.", creatorId));
+                String.format("Creator with id %d not found.", creatorId));
         }
         return creator;
     }
