@@ -5,4 +5,5 @@ public final class Constants {
     public static int MAX_PAGE_SIZE = 1000;
     public static int FULL_NAME_MAX_LENGTH = 50;
     public static int NOTE_TEXT_MAX_LENGTH = 100;
+    public static int SEARCH_TEXT_MAX_LENGTH = 50;
 }

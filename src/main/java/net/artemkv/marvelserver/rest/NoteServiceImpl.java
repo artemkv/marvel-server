@@ -3,10 +3,13 @@ package net.artemkv.marvelserver.rest;
 import net.artemkv.marvelserver.domain.CreatorModel;
 import net.artemkv.marvelserver.domain.NoteModel;
 import net.artemkv.marvelserver.repositories.NoteRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.ArrayList;
 
 @Service
 public class NoteServiceImpl implements NoteService {
@@ -20,8 +23,18 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public GetListResponse<NoteDto> getNotes(Pageable pageable) {
-        return null;
+    public GetListResponse<NoteDto> getNotes(String text, Pageable pageable) {
+        Page<NoteModel> page = noteRepository.findByTextLikeIgnoreCase("%" + text + "%", pageable);
+        ArrayList<NoteDto> notes = new ArrayList<>();
+        page.forEach(x -> notes.add(new NoteDto(x, x.getCreator().getId(), x.getCreator().getFullName())));
+
+        GetListResponse<NoteDto> response = new GetListResponse<NoteDto>(
+            pageable.getPageNumber(),
+            pageable.getPageSize(),
+            (int) page.getTotalElements(),
+            notes.size(),
+            notes);
+        return response;
     }
 
     @Override
