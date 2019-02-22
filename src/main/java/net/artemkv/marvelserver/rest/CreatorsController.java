@@ -1,6 +1,5 @@
 package net.artemkv.marvelserver.rest;
 
-import net.artemkv.marvelconnector.Creator;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -70,19 +69,19 @@ public class CreatorsController {
     @RequestMapping(
         method = RequestMethod.PUT,
         value = "/creator/{creatorId}/note",
-        consumes = "text/plain",
+        consumes = "application/json",
         produces = "application/json")
     public void postNote(
         @PathVariable int creatorId,
-        @RequestBody String noteText) {
+        @RequestBody NoteInDto note) {
         // Validate note text
-        if (noteText.length() > Constants.NOTE_TEXT_MAX_LENGTH) {
+        if (note.getText().length() > Constants.NOTE_TEXT_MAX_LENGTH) {
             throw new ResponseStatusException(
                 HttpStatus.BAD_REQUEST,
                 String.format("Note text should be %d chars maximum.", Constants.NOTE_TEXT_MAX_LENGTH));
         }
 
-        creatorsService.updateCreatorNote(creatorId, noteText);
+        creatorsService.updateCreatorNote(creatorId, note.getText());
     }
 
     @RequestMapping(
