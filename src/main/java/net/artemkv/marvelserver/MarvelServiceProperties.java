@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @PropertySource("classpath:marvelservice.properties")
 @ConfigurationProperties(prefix="marvelservice")
-public class MarvelServiceProperties {
+class MarvelServiceProperties {
     private int retries = 3;
 
     public int getRetries() {

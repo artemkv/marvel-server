@@ -6,7 +6,7 @@ import net.artemkv.marvelconnector.IntegrationException;
 import net.artemkv.marvelconnector.TimeoutException;
 import java.util.Date;
 
-public interface MarvelService {
+interface MarvelService {
     GetCreatorsResult getCreators(Date modifiedSince, int offset)
         throws IntegrationException, ExternalServiceUnavailableException, TimeoutException;
 }

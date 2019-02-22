@@ -5,7 +5,7 @@ import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UpToDateHealthCheck implements HealthIndicator {
+class UpToDateHealthCheck implements HealthIndicator {
     private LocalDbUpdater localDbUpdater;
 
     public UpToDateHealthCheck(LocalDbUpdater localDbUpdater) {

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 @Service
-public class MarvelServiceImpl implements MarvelService {
+class MarvelServiceImpl implements MarvelService {
     private static final Logger logger = LoggerFactory.getLogger(MarvelServiceImpl.class);
     private final MarvelApiRepository repository;
     private final MarvelServiceProperties properties;

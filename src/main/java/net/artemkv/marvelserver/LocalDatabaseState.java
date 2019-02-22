@@ -1,6 +1,6 @@
 package net.artemkv.marvelserver;
 
-public enum LocalDatabaseState {
+enum LocalDatabaseState {
     UP_TO_DATE,
     OUT_OF_DATE
 }

@@ -18,7 +18,7 @@ import java.util.Date;
 
 @Component
 @Scope("singleton")
-public class LocalDbUpdater {
+class LocalDbUpdater {
     private static final Logger logger = LoggerFactory.getLogger(LocalDbUpdater.class);
 
     LocalDatabaseState localDatabaseState = LocalDatabaseState.OUT_OF_DATE;
