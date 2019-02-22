@@ -3,6 +3,9 @@ package net.artemkv.marvelconnector;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Contains data returned by Marvel API
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 class CreatorDataWrapper {
     private int code;

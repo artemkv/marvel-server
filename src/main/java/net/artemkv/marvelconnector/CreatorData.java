@@ -8,6 +8,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Contains data returned by Marvel API
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 class CreatorData implements Creator {
     private static class ComicsData {

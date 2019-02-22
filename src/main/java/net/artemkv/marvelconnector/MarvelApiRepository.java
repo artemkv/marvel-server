@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Provides an access to Marvel API.
+ * Serves as a business facade for the marvel connector library.
  */
 @Component
 public class MarvelApiRepository {
