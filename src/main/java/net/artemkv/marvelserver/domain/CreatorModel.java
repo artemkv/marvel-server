@@ -2,19 +2,22 @@ package net.artemkv.marvelserver.domain;
 
 import net.artemkv.marvelconnector.Creator;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.Date;
 
 @Entity(name="Creator")
 public class CreatorModel {
     @Id
     private int id;
-
     private String fullName;
     private Date modified;
     private int comicsTotal;
     private int seriesTotal;
+    @OneToOne(cascade = CascadeType.ALL)
+    private NoteModel note;
 
     public CreatorModel() {
     }
@@ -69,5 +72,13 @@ public class CreatorModel {
 
     public void setSeriesTotal(int seriesTotal) {
         this.seriesTotal = seriesTotal;
+    }
+
+    public NoteModel getNote() {
+        return note;
+    }
+
+    public void setNote(NoteModel note) {
+        this.note = note;
     }
 }

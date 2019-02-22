@@ -1,12 +1,17 @@
 package net.artemkv.marvelserver.rest;
 
 import net.artemkv.marvelserver.domain.CreatorModel;
+import net.artemkv.marvelserver.domain.NoteModel;
 import net.artemkv.marvelserver.repositories.CreatorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
 @Service
 class CreatorsServiceImpl implements CreatorsService {
@@ -54,5 +59,18 @@ class CreatorsServiceImpl implements CreatorsService {
             creators.size(),
             creators);
         return response;
+    }
+
+    public void updateCreatorNote(int creatorId, String text) {
+        CreatorModel creator = creatorRepository.findById(creatorId).orElse(null);
+        if (creator == null) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                String.format("creator with id %d not found.", creatorId));
+        }
+        NoteModel note = new NoteModel();
+        note.setText(text);
+        creator.setNote(note);
+        creatorRepository.save(creator);
     }
 }

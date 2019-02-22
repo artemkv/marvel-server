@@ -13,6 +13,7 @@ public class CreatorDto {
     private String modified;
     private int comicsTotal;
     private int seriesTotal;
+    private NoteDto note;
 
     public CreatorDto(CreatorModel creator) {
         if (creator == null) {
@@ -25,6 +26,10 @@ public class CreatorDto {
         this.modified = formatter.format(creator.getModified());
         this.comicsTotal = creator.getComicsTotal();
         this.seriesTotal = creator.getSeriesTotal();
+
+        if (creator.getNote() != null) {
+            note = new NoteDto(creator.getNote(), this.id, this.fullName);
+        }
     }
 
     public int getId() {
@@ -65,5 +70,13 @@ public class CreatorDto {
 
     public void setSeriesTotal(int seriesTotal) {
         this.seriesTotal = seriesTotal;
+    }
+
+    public NoteDto getNote() {
+        return note;
+    }
+
+    public void setNote(NoteDto note) {
+        this.note = note;
     }
 }
