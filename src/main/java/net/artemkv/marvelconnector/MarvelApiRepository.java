@@ -61,7 +61,6 @@ public class MarvelApiRepository {
             String apiKey = properties.getPublicKey();
             String ts = String.valueOf(System.currentTimeMillis());
 
-            // TODO: think about making timeout configurable
             MarvelApi api = retrofit.create(MarvelApi.class);
             Call<CreatorDataWrapper> call = api.listCreators(
                 properties.getPageSize(),

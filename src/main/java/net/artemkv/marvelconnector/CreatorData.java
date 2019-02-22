@@ -2,6 +2,10 @@ package net.artemkv.marvelconnector;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -10,9 +14,24 @@ class CreatorData implements Creator {
         @JsonProperty("available")
         private int available;
     }
+
     private static class SeriesData {
         @JsonProperty("available")
         private int available;
+    }
+
+    private static final DateFormat formatter;
+    // This is the earliest date you can observe when using modifiedSince filter on Marvel API
+    // So any date before this one will be considered null
+    // This will allow to retrieve all the creators, even if the date is messed up
+    private static final Date earliestDateCanFilterBy;
+    static {
+        formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        try {
+            earliestDateCanFilterBy = formatter.parse("2007-01-01T00:00:00-0500");
+        } catch (ParseException e) {
+            throw new IllegalStateException("Impossible");
+        }
     }
 
     private int id;
@@ -20,7 +39,7 @@ class CreatorData implements Creator {
     private String middleName;
     private String lastName;
     private String fullName;
-    private Date modified;
+    private String modified;
 
     @JsonProperty("comics")
     private ComicsData comics;
@@ -31,6 +50,7 @@ class CreatorData implements Creator {
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -39,6 +59,7 @@ class CreatorData implements Creator {
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -47,6 +68,7 @@ class CreatorData implements Creator {
     public String getMiddleName() {
         return middleName;
     }
+
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
@@ -55,6 +77,7 @@ class CreatorData implements Creator {
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -63,16 +86,34 @@ class CreatorData implements Creator {
     public String getFullName() {
         return fullName;
     }
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    @JsonProperty("modified")
     public Date getModified() {
+        Date modifiedDate = null;
+
+        if (modified != null) {
+            try {
+                modifiedDate = formatter.parse(modified);
+                if (modifiedDate.before(earliestDateCanFilterBy)) {
+                    modifiedDate = null;
+                }
+            } catch (ParseException e) {
+                // Ignore
+            }
+        }
+        return modifiedDate;
+    }
+
+    @JsonProperty("modified")
+    public String getModifiedText() {
         return modified;
     }
-    public void setModified(Date modified) {
-        this.modified = modified;
+
+    public void setModifiedText(String modifiedText) {
+        this.modified = modifiedText;
     }
 
     public int getComicsTotal() {

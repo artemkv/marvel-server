@@ -40,7 +40,7 @@ class MarvelServiceImpl implements MarvelService {
                 retriesLeft--;
                 logger.debug(String.format(
                     "Requesting creators modified since %s, at offset %d",
-                    modifiedSince.toString(),
+                    modifiedSince != null ? modifiedSince.toString() : "beginning of time",
                     offset));
                 return repository.getCreators(modifiedSince, offset);
             } catch (TimeoutException e) {

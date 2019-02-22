@@ -29,7 +29,7 @@ public class CreatorModel {
 
         this.id = creator.getId();
         this.fullName = creator.getFullName();
-        this.modified = creator.getModified();
+        this.modified = creator.getModified() != null ? creator.getModified() : new Date(0);
         this.comicsTotal = creator.getComicsTotal();
         this.seriesTotal = creator.getSeriesTotal();
     }
