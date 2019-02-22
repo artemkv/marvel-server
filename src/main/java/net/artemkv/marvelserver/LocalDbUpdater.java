@@ -9,7 +9,6 @@ import net.artemkv.marvelconnector.IntegrationException;
 import net.artemkv.marvelconnector.TimeoutException;
 import net.artemkv.marvelserver.repositories.CreatorRepository;
 import net.artemkv.marvelserver.repositories.UpdateStatusRepository;
-import net.artemkv.marvelserver.services.MarvelService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;

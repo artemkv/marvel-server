@@ -1,17 +1,19 @@
 package net.artemkv.marvelserver.rest;
 
-import net.artemkv.marvelserver.domain.CreatorModel;
 import java.util.List;
 
+/**
+ * The view model to be returned by the REST Api
+ */
 public class GetCreatorsResponse {
     private int pageNumber;
     private int pageSize;
     private int total;
     private int count;
-    private List<CreatorModel> results;
+    private List<CreatorDto> results;
 
     public GetCreatorsResponse(
-        int pageNumber, int pageSize, int total, int count, List<CreatorModel> results) {
+        int pageNumber, int pageSize, int total, int count, List<CreatorDto> results) {
         this.pageNumber = pageNumber;
         this.pageSize = pageSize;
         this.total = total;
@@ -43,7 +45,7 @@ public class GetCreatorsResponse {
         return count;
     }
 
-    public List<CreatorModel> getResults() {
+    public List<CreatorDto> getResults() {
         return results;
     }
 }

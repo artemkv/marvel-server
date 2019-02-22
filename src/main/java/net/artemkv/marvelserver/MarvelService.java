@@ -1,4 +1,4 @@
-package net.artemkv.marvelserver.services;
+package net.artemkv.marvelserver;
 
 import net.artemkv.marvelconnector.ExternalServiceUnavailableException;
 import net.artemkv.marvelconnector.GetCreatorsResult;

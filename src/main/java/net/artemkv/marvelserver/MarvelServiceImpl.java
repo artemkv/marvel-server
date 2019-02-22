@@ -1,11 +1,10 @@
-package net.artemkv.marvelserver.services;
+package net.artemkv.marvelserver;
 
 import net.artemkv.marvelconnector.ExternalServiceUnavailableException;
 import net.artemkv.marvelconnector.GetCreatorsResult;
 import net.artemkv.marvelconnector.IntegrationException;
 import net.artemkv.marvelconnector.MarvelApiRepository;
 import net.artemkv.marvelconnector.TimeoutException;
-import net.artemkv.marvelserver.MarvelServiceProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
