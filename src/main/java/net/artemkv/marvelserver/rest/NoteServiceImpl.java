@@ -24,6 +24,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public GetListResponse<NoteDto> getNotes(String text, Pageable pageable) {
+        // TODO: to be revised according to https://blog.tratif.com/2017/11/23/effective-restful-search-api-in-spring/
         Page<NoteModel> page = null;
         if (text != null && text.trim().length() > 0) {
             page = noteRepository.findByTextLikeIgnoreCase("%" + text + "%", pageable);
