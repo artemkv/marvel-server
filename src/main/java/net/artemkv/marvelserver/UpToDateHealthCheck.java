@@ -4,6 +4,10 @@ import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
+/**
+ * Modifies health check endpoint (/actuator/health) behavior.
+ * Endpoint will return "DOWN" until all creators are up to date.
+ */
 @Component
 class UpToDateHealthCheck implements HealthIndicator {
     private LocalDbUpdater localDbUpdater;

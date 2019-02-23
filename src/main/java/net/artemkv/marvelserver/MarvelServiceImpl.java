@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
+/**
+ * Allows to retrieve marvel creators using re-trying logic, in case of transient error.
+ */
 @Service
 class MarvelServiceImpl implements MarvelService {
     private static final Logger logger = LoggerFactory.getLogger(MarvelServiceImpl.class);
