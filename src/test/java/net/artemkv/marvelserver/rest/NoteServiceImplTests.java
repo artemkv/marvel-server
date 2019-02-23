@@ -18,16 +18,20 @@ import static org.junit.Assert.assertEquals;
 public class NoteServiceImplTests {
     @Test
     public void testGetNotesPage0() {
+        // Arrange
         NoteServiceImpl service = new NoteServiceImpl(getRepository());
 
+        // Act
         Pageable pageable = PageRequest.of(0, 2);
         GetListResponse<NoteDto> response = service.getNotes("", pageable);
 
+        // Verify paging props
         assertEquals(0, response.getPageNumber());
         assertEquals(2, response.getPageSize());
         assertEquals(2, response.getCount());
         assertEquals(3, response.getTotal());
 
+        // Verify actual returned data
         assertEquals(2, response.getResults().size());
         assertEquals("Note 1", response.getResults().get(0).getText());
         assertEquals("Note 2", response.getResults().get(1).getText());
@@ -35,24 +39,33 @@ public class NoteServiceImplTests {
 
     @Test
     public void testGetNotesByText() {
+        // Arrange
         NoteServiceImpl service = new NoteServiceImpl(getRepository());
 
+        // Act
         Pageable pageable = PageRequest.of(0, 5);
         GetListResponse<NoteDto> response = service.getNotes("Note 2", pageable);
 
+        // Verify paging props
         assertEquals(0, response.getPageNumber());
         assertEquals(5, response.getPageSize());
         assertEquals(1, response.getCount());
         assertEquals(1, response.getTotal());
 
+        // Verify actual returned data
         assertEquals(1, response.getResults().size());
         assertEquals("Note 2", response.getResults().get(0).getText());
     }
 
     @Test
     public void testGetNotesById() {
+        // Arrange
         NoteServiceImpl service = new NoteServiceImpl(getRepository());
+
+        // Act
         NoteDto note = service.getNote(1);
+
+        // Verify the note returned
         assertEquals("Note 1", note.getText());
     }
 

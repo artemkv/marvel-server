@@ -16,16 +16,20 @@ import static org.junit.Assert.assertEquals;
 public class CreatorsServiceImplTests {
     @Test
     public void testGetCreatorsPage0() {
+        // Arrange
         CreatorsServiceImpl service = new CreatorsServiceImpl(getRepository());
 
+        // Act
         Pageable pageable = PageRequest.of(0, 2);
         GetListResponse<CreatorDto> response = service.getCreators("", null, pageable);
 
+        // Verify paging props
         assertEquals(0, response.getPageNumber());
         assertEquals(2, response.getPageSize());
         assertEquals(2, response.getCount());
         assertEquals(3, response.getTotal());
 
+        // Verify actual returned data
         assertEquals(2, response.getResults().size());
         assertEquals(111, response.getResults().get(0).getId());
         assertEquals(222, response.getResults().get(1).getId());
@@ -33,95 +37,120 @@ public class CreatorsServiceImplTests {
 
     @Test
     public void testGetCreatorsPage1() {
+        // Arrange
         CreatorsServiceImpl service = new CreatorsServiceImpl(getRepository());
 
+        // Act
         Pageable pageable = PageRequest.of(1, 2);
         GetListResponse<CreatorDto> response = service.getCreators("", null, pageable);
 
+        // Verify paging props
         assertEquals(1, response.getPageNumber());
         assertEquals(2, response.getPageSize());
         assertEquals(1, response.getCount());
         assertEquals(3, response.getTotal());
 
+        // Verify actual returned data
         assertEquals(1, response.getResults().size());
         assertEquals(333, response.getResults().get(0).getId());
     }
 
     @Test
     public void testGetCreatorsByFullName() {
+        // Arrange
         CreatorsServiceImpl service = new CreatorsServiceImpl(getRepository());
 
+        // Act
         Pageable pageable = PageRequest.of(0, 5);
         GetListResponse<CreatorDto> response = service.getCreators("Creator 2", null, pageable);
 
+        // Verify paging props
         assertEquals(0, response.getPageNumber());
         assertEquals(5, response.getPageSize());
         assertEquals(1, response.getCount());
         assertEquals(1, response.getTotal());
 
+        // Verify actual returned data
         assertEquals(1, response.getResults().size());
         assertEquals(111, response.getResults().get(0).getId());
     }
 
     @Test
     public void testGetCreatorsByModifiedSince() {
+        // Arrange
         CreatorsServiceImpl service = new CreatorsServiceImpl(getRepository());
 
+        // Act
         Pageable pageable = PageRequest.of(0, 5);
         GetListResponse<CreatorDto> response = service.getCreators("", new Date(), pageable);
 
+        // Verify paging props
         assertEquals(0, response.getPageNumber());
         assertEquals(5, response.getPageSize());
         assertEquals(1, response.getCount());
         assertEquals(1, response.getTotal());
 
+        // Verify actual returned data
         assertEquals(1, response.getResults().size());
         assertEquals(333, response.getResults().get(0).getId());
     }
 
     @Test
     public void testGetCreatorsByFullNameAndModifiedSince() {
+        // Arrange
         CreatorsServiceImpl service = new CreatorsServiceImpl(getRepository());
 
+        // Act
         Pageable pageable = PageRequest.of(0, 5);
         GetListResponse<CreatorDto> response = service.getCreators("Creator 2", new Date(), pageable);
 
+        // Verify paging props
         assertEquals(0, response.getPageNumber());
         assertEquals(5, response.getPageSize());
         assertEquals(1, response.getCount());
         assertEquals(1, response.getTotal());
 
+        // Verify actual returned data
         assertEquals(1, response.getResults().size());
         assertEquals(222, response.getResults().get(0).getId());
     }
 
     @Test
     public void testAddNote() {
+        // Arrange
         CreatorRepositoryStub repository = getRepository();
         CreatorsServiceImpl service = new CreatorsServiceImpl(repository);
 
+        // Set initial note text
         CreatorModel creator = repository.savedCreators.get(0);
         service.updateCreatorNote(creator.getId(), "Test note");
 
+        // Verify note text is set correctly
         assertEquals("Test note", creator.getNote().getText());
 
+        // Update note text
         service.updateCreatorNote(creator.getId(), "Test note updated");
 
+        // Verify note text is updated correctly
         assertEquals("Test note updated", creator.getNote().getText());
     }
 
     @Test
     public void testDeleteNote() {
+        // Arrange
         CreatorRepositoryStub repository = getRepository();
         CreatorsServiceImpl service = new CreatorsServiceImpl(repository);
 
         CreatorModel creator = repository.savedCreators.get(0);
         service.updateCreatorNote(creator.getId(), "Test note");
 
+        // Verify setup - should have note
         assertEquals("Test note", creator.getNote().getText());
 
+        // Act
         service.deleteCreatorNote(creator.getId());
 
+        // Verify deleted
         assertEquals(null, creator.getNote());
     }
 

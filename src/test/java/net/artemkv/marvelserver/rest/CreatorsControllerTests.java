@@ -12,7 +12,6 @@ public class CreatorsControllerTests {
         CreatorsController controller = new CreatorsController(new CreatorsServiceStub());
         Pageable pageable = PageRequest.of(0, 1000);
         GetListResponse<CreatorDto> response = controller.getCreators("", "", pageable);
-
     }
 
     @Test(expected = ResponseStatusException.class)
@@ -20,7 +19,6 @@ public class CreatorsControllerTests {
         CreatorsController controller = new CreatorsController(new CreatorsServiceStub());
         Pageable pageable = PageRequest.of(0, 1001);
         GetListResponse<CreatorDto> response = controller.getCreators("", "", pageable);
-
     }
 
     @Test
@@ -52,7 +50,7 @@ public class CreatorsControllerTests {
         CreatorsController controller = new CreatorsController(new CreatorsServiceStub());
         Pageable pageable = PageRequest.of(0, 10);
         GetListResponse<CreatorDto> response = controller.getCreators(
-            "", "JKFHJKSHKJ", pageable);
+            "", "Some unparseable date", pageable);
     }
 
     @Test
