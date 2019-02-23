@@ -2,6 +2,7 @@ package net.artemkv.marvelserver.rest;
 
 import net.artemkv.marvelconnector.Creator;
 import net.artemkv.marvelserver.domain.CreatorModel;
+import net.artemkv.marvelserver.domain.NoteModel;
 import net.artemkv.marvelserver.stubs.CreatorRepositoryStub;
 import net.artemkv.marvelserver.stubs.CreatorStub;
 import org.junit.Test;
@@ -94,6 +95,36 @@ public class CreatorsServiceImplTests {
 
         assertEquals(1, response.getResults().size());
         assertEquals(222, response.getResults().get(0).getId());
+    }
+
+    @Test
+    public void testAddNote() {
+        CreatorRepositoryStub repository = getRepository();
+        CreatorsServiceImpl service = new CreatorsServiceImpl(repository);
+
+        CreatorModel creator = repository.savedCreators.get(0);
+        service.updateCreatorNote(creator.getId(), "Test note");
+
+        assertEquals("Test note", creator.getNote().getText());
+
+        service.updateCreatorNote(creator.getId(), "Test note updated");
+
+        assertEquals("Test note updated", creator.getNote().getText());
+    }
+
+    @Test
+    public void testDeleteNote() {
+        CreatorRepositoryStub repository = getRepository();
+        CreatorsServiceImpl service = new CreatorsServiceImpl(repository);
+
+        CreatorModel creator = repository.savedCreators.get(0);
+        service.updateCreatorNote(creator.getId(), "Test note");
+
+        assertEquals("Test note", creator.getNote().getText());
+
+        service.deleteCreatorNote(creator.getId());
+
+        assertEquals(null, creator.getNote());
     }
 
     private CreatorRepositoryStub getRepository() {

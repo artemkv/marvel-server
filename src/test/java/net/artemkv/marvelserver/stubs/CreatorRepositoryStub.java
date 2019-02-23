@@ -390,6 +390,13 @@ public class CreatorRepositoryStub implements CreatorRepository {
 
     @Override
     public <S extends CreatorModel> S save(S s) {
+        for (int i = 0; i < savedCreators.size(); i++) {
+            if (savedCreators.get(i).getId() == s.getId()) {
+                savedCreators.set(i, s);
+                return s;
+            }
+        }
+
         savedCreators.add(s);
         return s;
     }
@@ -400,7 +407,13 @@ public class CreatorRepositoryStub implements CreatorRepository {
     }
 
     @Override
-    public Optional<CreatorModel> findById(Integer integer) {
+    public Optional<CreatorModel> findById(Integer id) {
+        for (int i = 0; i < savedCreators.size(); i++) {
+            if (savedCreators.get(i).getId() == id) {
+                return Optional.of(savedCreators.get(i));
+            }
+        }
+
         return Optional.empty();
     }
 
