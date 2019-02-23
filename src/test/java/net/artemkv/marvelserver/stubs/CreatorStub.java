@@ -1,4 +1,4 @@
-package net.artemkv.marvelserver;
+package net.artemkv.marvelserver.stubs;
 
 import net.artemkv.marvelconnector.Creator;
 

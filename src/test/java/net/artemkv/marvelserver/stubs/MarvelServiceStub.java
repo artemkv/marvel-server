@@ -1,10 +1,11 @@
-package net.artemkv.marvelserver;
+package net.artemkv.marvelserver.stubs;
 
 import net.artemkv.marvelconnector.Creator;
 import net.artemkv.marvelconnector.ExternalServiceUnavailableException;
 import net.artemkv.marvelconnector.GetCreatorsResult;
 import net.artemkv.marvelconnector.IntegrationException;
 import net.artemkv.marvelconnector.TimeoutException;
+import net.artemkv.marvelserver.MarvelService;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -12,7 +13,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-class MarvelServiceStub implements MarvelService {
+public class MarvelServiceStub implements MarvelService {
     @Override
     public GetCreatorsResult getCreators(Date modifiedSince, int offset)
         throws IntegrationException, ExternalServiceUnavailableException, TimeoutException {
