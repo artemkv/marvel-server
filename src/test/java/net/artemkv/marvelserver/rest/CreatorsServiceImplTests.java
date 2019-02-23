@@ -2,13 +2,11 @@ package net.artemkv.marvelserver.rest;
 
 import net.artemkv.marvelconnector.Creator;
 import net.artemkv.marvelserver.domain.CreatorModel;
-import net.artemkv.marvelserver.domain.NoteModel;
 import net.artemkv.marvelserver.stubs.CreatorRepositoryStub;
 import net.artemkv.marvelserver.stubs.CreatorStub;
 import org.junit.Test;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;

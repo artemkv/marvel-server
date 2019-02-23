@@ -24,7 +24,12 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public GetListResponse<NoteDto> getNotes(String text, Pageable pageable) {
-        Page<NoteModel> page = noteRepository.findByTextLikeIgnoreCase("%" + text + "%", pageable);
+        Page<NoteModel> page = null;
+        if (text != null && text.trim().length() > 0) {
+            page = noteRepository.findByTextLikeIgnoreCase("%" + text + "%", pageable);
+        } else {
+            page = noteRepository.findAll(pageable);
+        }
         ArrayList<NoteDto> notes = new ArrayList<>();
         page.forEach(x -> notes.add(new NoteDto(x, x.getCreator().getId(), x.getCreator().getFullName())));
 
