@@ -38,10 +38,6 @@ public class CreatorsController {
                 HttpStatus.BAD_REQUEST,
                 String.format("Size should be a number 1-%d", Constants.MAX_PAGE_SIZE));
         }
-        if (pageable.getPageNumber() < 0) {
-            throw new ResponseStatusException(
-                HttpStatus.BAD_REQUEST, "Page should be >= 0");
-        }
 
         // Validate modified since
         Date modifiedSince = null;

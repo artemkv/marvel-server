@@ -32,10 +32,6 @@ public class NoteController {
                 HttpStatus.BAD_REQUEST,
                 String.format("Size should be a number 1-%d", Constants.MAX_PAGE_SIZE));
         }
-        if (pageable.getPageNumber() < 0) {
-            throw new ResponseStatusException(
-                HttpStatus.BAD_REQUEST, "Page should be >= 0");
-        }
 
         // Validate search text
         if (text.length() > Constants.SEARCH_TEXT_MAX_LENGTH) {
