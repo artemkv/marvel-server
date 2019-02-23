@@ -42,7 +42,7 @@ public class CreatorsControllerTests {
         CreatorsController controller = new CreatorsController(new CreatorsServiceStub());
         Pageable pageable = PageRequest.of(0, 10);
         GetListResponse<CreatorDto> response = controller.getCreators(
-            "", "1970-01-01T01:00:00.000+01", pageable);
+            "", "1970-01-01T01:00:00", pageable);
     }
 
     @Test(expected = ResponseStatusException.class)
