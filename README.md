@@ -61,19 +61,26 @@ mvnw spring-boot:run
 
 ## Configuration properties
 
+application.properties
 ```
 server.address - the address on which the service will be available (0.0.0.0)
 server.port - the port on which the service will be available (8080)
 spring.datasource.url - the connection string to connect to H2 database (jdbc:h2:file:~/marveldb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE)
 logging.path - the path to the log file (logs)
+```
 
+marvelapi.properties
+```
 marvelapi.url - the base url to connect to Marvel Comics API (http://gateway.marvel.com/)
 marvelapi.page_size - the page size when retrieving the data from Marvel Comics API (100)
 marvelapi.public_key - the public key required to connect to Marvel Comics API
 marvelapi.private_key - the private key required to connect to Marvel Comics API
 marvelapi.connection_timeout - the connection timeout when connecting to Marvel Comics API (60)
 marvelapi.read_timeout - the read timeout when connecting to Marvel Comics API (60)
+```
 
+marvelservice.properties
+```
 marvelservice.retries - the number of retries for a single call when trying to retrieve data from Marvel Comics API (3)
 ```
 
