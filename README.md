@@ -189,3 +189,31 @@ http://localhost:8080/api/creator/12976
   }
 }
 ```
+
+### PUT /creator/{creatorId}/note
+
+Updates the note for the creator with given id.
+When note does not exist, creates the new one. When note exists, overwrites it.
+
+#### Examples:
+
+```
+Url:
+http://localhost:8080/api/creator/12976/note
+
+Body:
+{
+  "text": "Cool creator"
+}
+```
+
+### DELETE /creator/{creatorId}/note
+
+Deletes the note for the creator with given id.
+
+#### Examples:
+
+```
+Url:
+http://localhost:8080/api/creator/12976/note
+```
