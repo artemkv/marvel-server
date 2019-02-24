@@ -280,3 +280,41 @@ http://localhost:8080/api/note/1
   "creatorFullName": "Vc Cory Petit"
 }
 ```
+
+### GET /actuator/health
+
+Health endpoint.
+
+#### Examples:
+
+```
+http://localhost:8080/actuator/health
+```
+
+#### Result:
+
+```
+{
+  "status": "UP",
+  "details": {
+    "upToDateHealthCheck": {
+      "status": "UP"
+    },
+    "db": {
+      "status": "UP",
+      "details": {
+        "database": "H2",
+        "hello": 1
+      }
+    },
+    "diskSpace": {
+      "status": "UP",
+      "details": {
+        "total": 253889605632,
+        "free": 194039353344,
+        "threshold": 10485760
+      }
+    }
+  }
+}
+```
