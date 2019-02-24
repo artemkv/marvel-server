@@ -45,6 +45,16 @@ And to run it:
 mvnw spring-boot:run
 ```
 
+## Dependencies
+
+* Spring Boot Web Starter
+* Spring Boot Data JPA Starter
+* Spring Boot Actuator Starter
+* H2 Database Engine (Java SQL database)
+* Retrofit (type-safe HTTP client for Android and Java)
+* Retrofit Converter: Gson (Gson converter for Retrofit)
+
+
 ## Configuration properties
 
 ```
