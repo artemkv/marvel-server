@@ -161,3 +161,31 @@ http://localhost:8080/api/creators?sort=modified&page=0&size=5&modifiedSince=200
   ]
 }
 ```
+
+### GET /creator/{creatorId}
+
+Returns the creator by id.
+
+#### Examples:
+
+```
+http://localhost:8080/api/creator/12976
+```
+
+#### Result:
+
+```
+{
+  "id": 12976,
+  "fullName": "Patrick Brown",
+  "modified": "2017-02-10T12:17:34",
+  "comicsTotal": 11,
+  "seriesTotal": 3,
+  "note": {
+    "id": 34,
+    "text": "Hello note modified",
+    "creatorId": 12976,
+    "creatorFullName": "Patrick Brown"
+  }
+}
+```
