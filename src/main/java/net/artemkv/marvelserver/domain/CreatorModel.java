@@ -16,7 +16,7 @@ public class CreatorModel {
     private Date modified;
     private int comicsTotal;
     private int seriesTotal;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval=true)
     private NoteModel note;
 
     public CreatorModel() {
