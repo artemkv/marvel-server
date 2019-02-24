@@ -23,6 +23,11 @@ class CreatorsServiceImpl implements CreatorsService {
     }
 
     @Override
+    public CreatorDto getCreator(int id) {
+        return new CreatorDto(getCreatorWithCheck(id));
+    }
+
+    @Override
     public GetListResponse<CreatorDto> getCreators(String fullName, Date modifiedSince, Pageable pageable) {
         boolean filterByFullName = false;
         if (fullName != null && fullName.trim().length() > 0) {

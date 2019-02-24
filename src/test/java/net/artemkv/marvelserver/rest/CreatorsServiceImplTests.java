@@ -154,6 +154,19 @@ public class CreatorsServiceImplTests {
         assertEquals(null, creator.getNote());
     }
 
+    @Test
+    public void testGetCreatorById() {
+        // Arrange
+        CreatorRepositoryStub repository = getRepository();
+        CreatorsServiceImpl service = new CreatorsServiceImpl(repository);
+
+        // Act
+        CreatorDto creator = service.getCreator(111);
+
+        // Verify the note returned
+        assertEquals(111, creator.getId());
+    }
+
     private CreatorRepositoryStub getRepository() {
         CreatorRepositoryStub creatorRepository = new CreatorRepositoryStub();
 

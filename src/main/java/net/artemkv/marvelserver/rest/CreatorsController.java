@@ -27,6 +27,12 @@ public class CreatorsController {
         this.creatorsService = creatorsService;
     }
 
+    @RequestMapping(
+        method = RequestMethod.GET, value = "/creator/{creatorId}", produces = "application/json")
+    public CreatorDto getNote(@PathVariable int creatorId) {
+        return creatorsService.getCreator(creatorId);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/creators", produces = "application/json")
     public GetListResponse<CreatorDto> getCreators(
         @RequestParam(value = "fullName", defaultValue = "") String fullName,

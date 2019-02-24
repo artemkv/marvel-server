@@ -22,10 +22,15 @@ public class NoteController {
         this.noteService = noteService;
     }
 
+    @RequestMapping(
+        method = RequestMethod.GET, value = "/note/{noteId}", produces = "application/json")
+    public NoteDto getNote(@PathVariable int noteId) {
+        return noteService.getNote(noteId);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/notes", produces = "application/json")
     public GetListResponse<NoteDto> getNotes(
-        @RequestParam(value = "text", defaultValue = "") String text,
-        Pageable pageable) {
+        @RequestParam(value = "text", defaultValue = "") String text, Pageable pageable) {
         // Validate paging
         if (pageable.getPageSize() < 1 || pageable.getPageSize() > Constants.MAX_PAGE_SIZE) {
             throw new ResponseStatusException(
@@ -41,13 +46,5 @@ public class NoteController {
         }
 
         return noteService.getNotes(text, pageable);
-    }
-
-    @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/note/{noteId}",
-        produces = "application/json")
-    public NoteDto getNote(@PathVariable int noteId) {
-        return noteService.getNote(noteId);
     }
 }

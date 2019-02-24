@@ -9,6 +9,11 @@ import java.util.Date;
 
 public class CreatorsServiceStub implements CreatorsService {
     @Override
+    public CreatorDto getCreator(int id) {
+        return null;
+    }
+
+    @Override
     public GetListResponse<CreatorDto> getCreators(String fullName, Date modifiedSince, Pageable pageable) {
         return null;
     }
