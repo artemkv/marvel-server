@@ -23,7 +23,7 @@ So in essence, my approach is:
 
 Considering the quite small amount of data retrieved (slightly over 6000 creators), this approach have shown to be quite effective. There were 2 extra hacks required:
 * The earliest record I could retrieve when providing modifiedSince filter was from 2007-01-01. All records before that were excluded from the results. So I had to do my initial request without modifiedSince filter
-* When no modifiedSince filter is specified, Marvel Comics API retrieve first creators with modified from 1969-12-31, then with -0001-11-30. This dates and order does not make much sense, so I normalized all the dates before 2007-01-01 as being of 1970-01-01
+* When no modifiedSince filter is specified, Marvel Comics API retrieve first creators with modified from 1969-12-31, then with -0001-11-30, then all the rest. This order does not make much sense to me, and since these dates were not visible using modifiedSince filter anyway, I normalized all the dates before 2007-01-01 as being of 1970-01-01
 
 ### Main components
 
