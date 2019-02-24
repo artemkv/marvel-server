@@ -217,3 +217,66 @@ Deletes the note for the creator with given id.
 Url:
 http://localhost:8080/api/creator/12976/note
 ```
+
+### GET /notes
+
+Returns the list of notes, paginated.
+
+#### Options:
+
+* __text__ - retrieve the notes which text contains the provided string.
+* __page__ - The page number.
+* __size__ - The page size.
+* __sort__ - The sorting order. Fields allowed: "id", "text". Use "id,desc" to sort in descending order. Multiple sort params are allowed to sort on several properties.
+
+#### Examples:
+
+```
+http://localhost:8080/api/notes?text=cre&sort=id,desc
+```
+
+#### Result:
+
+```
+{
+  "pageNumber": 0,
+  "pageSize": 20,
+  "total": 2,
+  "count": 2,
+  "results": [
+    {
+      "id": 35,
+      "text": "This creator is very cool!",
+      "creatorId": 25,
+      "creatorFullName": "Alex Maleev"
+    },
+    {
+      "id": 1,
+      "text": "Cool creator",
+      "creatorId": 12980,
+      "creatorFullName": "Vc Cory Petit"
+    }
+  ]
+}
+```
+
+### GET /note/{noteId}
+
+Returns the note by id.
+
+#### Examples:
+
+```
+http://localhost:8080/api/note/1
+```
+
+#### Result:
+
+```
+{
+  "id": 1,
+  "text": "Cool creator",
+  "creatorId": 12980,
+  "creatorFullName": "Vc Cory Petit"
+}
+```
