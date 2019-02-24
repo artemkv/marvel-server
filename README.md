@@ -24,9 +24,9 @@ Considering the quite small amount of data retrieved (slightly over 6000 creator
 * When no modifiedSince filter is specified, Marvel Comics API retrieve first creators with modified from 1969-12-31, then with -0001-11-30. This dates and order does not make much sense, so I normalized all the dates before 2007-01-01 as being of 1970-01-01
 
 The marvel-server project is built out of 3 main parts:
-* Marvel Connector (package net.artemkv.marvelconnector): Knows how to speak to Marvel Comics API. Exposes all the data through the MarvelApiRepository, which serves as a facade for the connector, hiding all the implementation details. It returns interfaces to avoid any dependency on JSON objects and converts low-level exceptions into exceptions that match the absraction level of the connector.
-* Marvel Server - REST Api (package net.artemkv.marvelserver.rest): Contains controllers, JSON models and business logic for request handling.
-* Marvel Server (package net.artemkv.marvelserver): Provides run-time for the service. This is a standard Spring Boot application. Contains logic to update the local db from Marvel Comics API on scheduled intervals.
+* __Marvel Connector (package net.artemkv.marvelconnector):__ Knows how to speak to Marvel Comics API. Exposes all the data through the MarvelApiRepository, which serves as a facade for the connector, hiding all the implementation details. It returns interfaces to avoid any dependency on JSON objects and converts low-level exceptions into exceptions that match the absraction level of the connector.
+* __Marvel Server - REST Api (package net.artemkv.marvelserver.rest):__ Contains controllers, JSON models and business logic for request handling.
+* __Marvel Server (package net.artemkv.marvelserver):__ Provides run-time for the service. This is a standard Spring Boot application. Contains logic to update the local db from Marvel Comics API on scheduled intervals.
 
 ![](design.png)
 
