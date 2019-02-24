@@ -6,6 +6,8 @@ Wraps the Marvel API to provide custom filtering, sorting, note management and s
 
 Marvel server uses the Marvel Comics API to retrieve the data.
 
+### Approach
+
 My initial idea was to connect to Marvel Comics API ad-hoc to retrieve the necessary data.
 This approach did not work due to several limitations of Marvel Comics API, notably:
 * There is no way to order results by number of comics/series (asked Marvel support for a help, no reply)
@@ -22,6 +24,8 @@ So in essence, my approach is:
 Considering the quite small amount of data retrieved (slightly over 6000 creators), this approach have shown to be quite effective. There were 2 extra hacks required:
 * The earliest record I could retrieve when providing modifiedSince filter was from 2007-01-01. All records before that were excluded from the results. So I had to do my initial request without modifiedSince filter
 * When no modifiedSince filter is specified, Marvel Comics API retrieve first creators with modified from 1969-12-31, then with -0001-11-30. This dates and order does not make much sense, so I normalized all the dates before 2007-01-01 as being of 1970-01-01
+
+### Main components
 
 The marvel-server project is built out of 3 main parts:
 * __Marvel Connector (package net.artemkv.marvelconnector):__ Knows how to speak to Marvel Comics API. Exposes all the data through the MarvelApiRepository, which serves as a facade for the connector, hiding all the implementation details. It returns interfaces to avoid any dependency on JSON objects and converts low-level exceptions into exceptions that match the absraction level of the connector.
@@ -89,4 +93,71 @@ MARVEL_API_PUBLIC_KEY - the public key required to connect to Marvel Comics API
 MARVEL_API_PRIVATE_KEY - the private key required to connect to Marvel Comics API
 MARVEL_API_CONNECTION_TIMEOUT - the connection timeout when connecting to Marvel Comics API (60)
 MARVEL_API_READ_TIMEOUT - the read timeout when connecting to Marvel Comics API (60)
+```
+
+## REST API Endpoints
+
+### GET /creators
+
+Returns the list of creators, paginated.
+
+#### Options:
+
+* __fullName__ - retrieve the creator which full name matches the provided value.
+* __modifiedSince__ - retrieve the creators that are modified since the date specified. Format: "2007-01-01T00:00:00", url encoded.
+* __page__ - The page number.
+* __size__ - The page size.
+* __sort__ - The sorting order. Fields allowed: "id", "fullName", "modified", "comicsTotal", "seriesTotal". Use "modified,desc" to sort in descending order. Multiple sort params are allowed to sort on several properties.
+
+#### Examples:
+
+```
+http://localhost:8080/api/creators
+
+http://localhost:8080/api/creators?sort=modified&page=2&size=5
+
+http://localhost:8080/api/creators?sort=modified&sort=id,desc&page=0&size=5
+
+http://localhost:8080/api/creators?sort=comicsTotal,desc&page=2&size=5
+
+http://localhost:8080/api/creators?sort=modified&page=2&size=5&modifiedSince=2007-01-01T00%3A00%3A00
+
+http://localhost:8080/api/creators?sort=modified&page=0&size=5&fullName=Rick%20Remender
+
+http://localhost:8080/api/creators?sort=modified&page=0&size=5&modifiedSince=2007-01-01T00%3A00%3A00&fullName=Rick%20Remender
+```
+
+#### Result:
+
+```
+{
+  "pageNumber": 3,
+  "pageSize": 5,
+  "total": 6199,
+  "count": 5,
+  "results": [
+    {
+      "id": 12507,
+      "fullName": "Christopher Moeller",
+      "modified": "1970-01-01T01:00:00",
+      "comicsTotal": 3,
+      "seriesTotal": 2,
+      "note": null
+    },
+    {
+      "id": 12631,
+      "fullName": "Bill Hughes",
+      "modified": "1970-01-01T01:00:00",
+      "comicsTotal": 9,
+      "seriesTotal": 3,
+      "note": {
+        "id": 34,
+        "text": "Hello note",
+        "creatorId": 12631,
+        "creatorFullName": "Bill Hughes"
+      }
+    },
+    ...
+  ]
+}
 ```
