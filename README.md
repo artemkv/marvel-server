@@ -28,13 +28,46 @@ The marvel-server project is built out of 3 main parts:
 * __Marvel Server - REST Api (package net.artemkv.marvelserver.rest):__ Contains controllers, JSON models and business logic for request handling.
 * __Marvel Server (package net.artemkv.marvelserver):__ Provides run-time for the service. This is a standard Spring Boot application. Contains logic to update the local db from Marvel Comics API on scheduled intervals.
 
+I used H2 in-memory database configured to persist data on disk to speed up the development. In real life this should be replaced by more robust solution.
+
 ![](design.png)
+
+## Build and run the project
+
+
 
 ## Configuration properties
 
+```
+server.address - the address on which the service will be available (0.0.0.0)
+server.port - the port on which the service will be available (8080)
+spring.datasource.url - the connection string to connect to H2 database (jdbc:h2:file:~/marveldb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE)
+logging.path - the path to the log file (logs)
+
+marvelapi.url - the base url to connect to Marvel Comics API (http://gateway.marvel.com/)
+marvelapi.page_size - the page size when retrieving the data from Marvel Comics API (100)
+marvelapi.public_key - the public key required to connect to Marvel Comics API
+marvelapi.private_key - the private key required to connect to Marvel Comics API
+marvelapi.connection_timeout - the connection timeout when connecting to Marvel Comics API (60)
+marvelapi.read_timeout - the read timeout when connecting to Marvel Comics API (60)
+
+marvelservice.retries - the number of retries for a single call when trying to retrieve data from Marvel Comics API (3)
+```
+
 ## Environemt variables:
 
+Note: Values of environment variables override the configuration parameters.
+
 ```
-SERVER_ADDRESS
-SERVER_PORT
+SERVER_ADDRESS - the address on which the service will be available (0.0.0.0)
+SERVER_PORT - the port on which the service will be available (8080)
+DB_CONNECTION_STRING - the connection string to connect to H2 database (jdbc:h2:file:~/marveldb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE)
+LOGGING_PATH - the path to the log file (logs)
+
+MARVEL_API_URL - the base url to connect to Marvel Comics API (http://gateway.marvel.com/)
+MARVEL_API_PAGE_SIZE - the page size when retrieving the data from Marvel Comics API (100)
+MARVEL_API_PUBLIC_KEY - the public key required to connect to Marvel Comics API
+MARVEL_API_PRIVATE_KEY - the private key required to connect to Marvel Comics API
+MARVEL_API_CONNECTION_TIMEOUT - the connection timeout when connecting to Marvel Comics API (60)
+MARVEL_API_READ_TIMEOUT - the read timeout when connecting to Marvel Comics API (60)
 ```
