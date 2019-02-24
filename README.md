@@ -34,7 +34,16 @@ I used H2 in-memory database configured to persist data on disk to speed up the 
 
 ## Build and run the project
 
+This is a standard Maven project, so you can build it using:
 
+```
+mvnw clean package
+```
+And to run it:
+
+```
+mvnw spring-boot:run
+```
 
 ## Configuration properties
 
