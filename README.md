@@ -73,7 +73,7 @@ marvelapi.read_timeout - the read timeout when connecting to Marvel Comics API (
 marvelservice.retries - the number of retries for a single call when trying to retrieve data from Marvel Comics API (3)
 ```
 
-## Environemt variables:
+## Environment variables:
 
 Note: Values of environment variables override the configuration parameters.
 
