@@ -43,9 +43,9 @@ class CreatorsServiceImpl implements CreatorsService {
         Page<CreatorModel> page = null;
         if (filterByFullName && filterByModified) {
             page = creatorRepository
-                .findByFullNameIgnoreCaseAndModifiedGreaterThan(fullName, modifiedSince, pageable);
+                .findByFullNameLikeIgnoreCaseAndModifiedGreaterThan("%" + fullName + "%", modifiedSince, pageable);
         } else if (filterByFullName) {
-            page = creatorRepository.findByFullNameIgnoreCase(fullName, pageable);
+            page = creatorRepository.findByFullNameLikeIgnoreCase("%" + fullName + "%", pageable);
         } else if (filterByModified) {
             page = creatorRepository.findByModifiedGreaterThan(modifiedSince, pageable);
         } else {

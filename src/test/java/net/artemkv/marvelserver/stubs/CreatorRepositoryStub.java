@@ -20,7 +20,7 @@ public class CreatorRepositoryStub implements CreatorRepository {
     public CreatorModel matchingCreatorByFullNameAndModifiedSince;
 
     @Override
-    public Page<CreatorModel> findByFullNameIgnoreCase(String fullName, Pageable pageable) {
+    public Page<CreatorModel> findByFullNameLikeIgnoreCase(String fullName, Pageable pageable) {
         List<CreatorModel> content = new ArrayList<>();
         content.add(matchingCreatorByFullName);
 
@@ -196,7 +196,7 @@ public class CreatorRepositoryStub implements CreatorRepository {
     }
 
     @Override
-    public Page<CreatorModel> findByFullNameIgnoreCaseAndModifiedGreaterThan(String fullName, Date modified, Pageable pageable) {
+    public Page<CreatorModel> findByFullNameLikeIgnoreCaseAndModifiedGreaterThan(String fullName, Date modified, Pageable pageable) {
         List<CreatorModel> content = new ArrayList<>();
         content.add(matchingCreatorByFullNameAndModifiedSince);
 

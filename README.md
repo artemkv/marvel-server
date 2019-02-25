@@ -110,7 +110,7 @@ Returns the list of creators, paginated.
 
 #### Options:
 
-* __fullName__ - retrieve the creator which full name matches the provided value.
+* __fullName__ - retrieve the creators that have full name containing provided value.
 * __modifiedSince__ - retrieve the creators that are modified since the date specified. Format: "2007-01-01T00:00:00", url encoded.
 * __page__ - The page number.
 * __size__ - The page size.
@@ -129,9 +129,9 @@ http://localhost:8080/api/creators?sort=comicsTotal,desc&page=2&size=5
 
 http://localhost:8080/api/creators?sort=modified&page=2&size=5&modifiedSince=2007-01-01T00%3A00%3A00
 
-http://localhost:8080/api/creators?sort=modified&page=0&size=5&fullName=Rick%20Remender
+http://localhost:8080/api/creators?sort=modified&page=0&size=5&fullName=rick
 
-http://localhost:8080/api/creators?sort=modified&page=0&size=5&modifiedSince=2007-01-01T00%3A00%3A00&fullName=Rick%20Remender
+http://localhost:8080/api/creators?sort=modified&page=0&size=5&modifiedSince=2007-01-01T00%3A00%3A00&fullName=rick
 ```
 
 #### Result:

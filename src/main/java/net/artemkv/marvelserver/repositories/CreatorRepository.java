@@ -8,8 +8,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.Date;
 
 public interface CreatorRepository extends PagingAndSortingRepository<CreatorModel, Integer> {
-    Page<CreatorModel> findByFullNameIgnoreCase(String fullName, Pageable pageable);
+    Page<CreatorModel> findByFullNameLikeIgnoreCase(String fullName, Pageable pageable);
     Page<CreatorModel> findByModifiedGreaterThan(Date modified, Pageable pageable);
-    Page<CreatorModel> findByFullNameIgnoreCaseAndModifiedGreaterThan(
+    Page<CreatorModel> findByFullNameLikeIgnoreCaseAndModifiedGreaterThan(
         String fullName, Date modified, Pageable pageable);
 }
