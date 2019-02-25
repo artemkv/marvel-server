@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/artemkv/marvel-server.svg?style=svg)](https://circleci.com/gh/artemkv/marvel-server)
+
 # Marvel Server - REST API Service
 
 Wraps the Marvel API to provide custom filtering, sorting, note management and simple analysis.
