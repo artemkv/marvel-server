@@ -43,6 +43,13 @@ This is a standard Maven project, so you can build it (and run unit-tests) using
 ```
 mvnw clean package
 ```
+
+Note: this will also create a Docker container. If you don't have Docker installed, you can build it just until the package step (compile + unit tests), by running: 
+
+```
+mvnw clean test
+```
+
 And to run it:
 
 ```
@@ -51,12 +58,24 @@ mvnw spring-boot:run
 
 ## Dependencies
 
+### External:
+
+* Docker (Build-time, for packaging and delivery)
+
+### Maven-managed:
+
 * Spring Boot Web Starter
 * Spring Boot Data JPA Starter
 * Spring Boot Actuator Starter
 * H2 Database Engine (Java SQL database)
 * Retrofit (type-safe HTTP client for Android and Java)
 * Retrofit Converter: Gson (Gson converter for Retrofit)
+
+### Maven plugins
+
+* Spring Boot Maven Plugin (provides Spring Boot support in Maven)
+* Maven Surefire Plugin (runs the unit tests of an application)
+* dockerfile-maven-plugin (a Maven plugin for building and pushing Docker images)
 
 
 ## Configuration properties
