@@ -58,6 +58,26 @@ And to run it:
 mvnw spring-boot:run
 ```
 
+### Running in Docker
+
+You can also run the application as a Docker container, using an image from Docker Hub:
+
+```
+# update images
+docker pull artemkv/marvel-service:latest
+
+# run image
+sudo mkdir -p /var/data/marvel
+sudo chmod 757 /var/data/marvel
+docker run \
+    -d -p 8500:8500 \
+    -v /var/data/marvel:/usr/local/bin/marvel/data \
+    --env MARVEL_API_PUBLIC_KEY=<YOUR PUBLIC KEY> \
+    --env MARVEL_API_PRIVATE_KEY=<YOUR PRIVATE KEY> \
+    --restart always \
+    artemkv/marvel-service:latest
+```
+
 ## Dependencies
 
 ### External:
