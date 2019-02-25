@@ -66,6 +66,8 @@ application.properties
 server.address - the address on which the service will be available (0.0.0.0)
 server.port - the port on which the service will be available (8080)
 spring.datasource.url - the connection string to connect to H2 database (jdbc:h2:file:~/marveldb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE)
+management.endpoints.web.exposure.include - changes which actuator endpoints (/health, /logfile etc.) are exposed (*)
+management.endpoint.health.show-details - configures the information exposed by the health endpoint (always)
 logging.path - the path to the log file (logs)
 ```
 
@@ -92,6 +94,8 @@ Note: Values of environment variables override the configuration parameters.
 SERVER_ADDRESS - the address on which the service will be available (0.0.0.0)
 SERVER_PORT - the port on which the service will be available (8080)
 DB_CONNECTION_STRING - the connection string to connect to H2 database (jdbc:h2:file:~/marveldb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE)
+MANAGEMENT_ENDPOINTS - changes which actuator endpoints (/health, /logfile etc.) are exposed (*)
+HEALTH_DETAILS - configures the information exposed by the health endpoint (always)
 LOGGING_PATH - the path to the log file (logs)
 
 MARVEL_API_URL - the base url to connect to Marvel Comics API (http://gateway.marvel.com/)
@@ -104,7 +108,7 @@ MARVEL_API_READ_TIMEOUT - the read timeout when connecting to Marvel Comics API 
 
 ## REST API Endpoints
 
-### GET /creators
+### GET /api/creators
 
 Returns the list of creators, paginated.
 
@@ -169,7 +173,7 @@ http://localhost:8080/api/creators?sort=modified&page=0&size=5&modifiedSince=200
 }
 ```
 
-### GET /creator/{creatorId}
+### GET /api/creator/{creatorId}
 
 Returns the creator by id.
 
@@ -197,7 +201,7 @@ http://localhost:8080/api/creator/12976
 }
 ```
 
-### PUT /creator/{creatorId}/note
+### PUT /api/creator/{creatorId}/note
 
 Updates the note for the creator with given id.
 When note does not exist, creates the new one. When note exists, overwrites it.
@@ -214,7 +218,7 @@ Body:
 }
 ```
 
-### DELETE /creator/{creatorId}/note
+### DELETE /api/creator/{creatorId}/note
 
 Deletes the note for the creator with given id.
 
@@ -225,7 +229,7 @@ Url:
 http://localhost:8080/api/creator/12976/note
 ```
 
-### GET /notes
+### GET /api/notes
 
 Returns the list of notes, paginated.
 
@@ -267,7 +271,7 @@ http://localhost:8080/api/notes?text=cre&sort=id,desc
 }
 ```
 
-### GET /note/{noteId}
+### GET /api/note/{noteId}
 
 Returns the note by id.
 
@@ -291,6 +295,8 @@ http://localhost:8080/api/note/1
 ### GET /actuator/health
 
 Health endpoint.
+Use management.endpoints.web.exposure.include property (or MANAGEMENT_ENDPOINTS environment variable) to disable it.
+Use management.endpoint.health.show-details property (or HEALTH_DETAILS environment variable) to control what is visible.
 
 #### Examples:
 
@@ -324,4 +330,23 @@ http://localhost:8080/actuator/health
     }
   }
 }
+```
+
+### GET /actuator/logfile
+
+If enabled, shows the logfile.
+Use management.endpoints.web.exposure.include (or MANAGEMENT_ENDPOINTS environment variable) property to disable it.
+
+#### Examples:
+
+```
+http://localhost:8080/actuator/logfile
+```
+
+#### Result:
+
+```
+2019-02-25 09:59:39.417 DEBUG 2504 --- [scheduling-1] net.artemkv.marvelserver.LocalDbUpdater  : Updating creators from Marvel...
+2019-02-25 09:59:39.418 DEBUG 2504 --- [scheduling-1] n.a.marvelserver.MarvelServiceImpl       : Requesting creators modified since 2019-02-19 14:40:26.0, at offset 0
+2019-02-25 09:59:40.095 DEBUG 2504 --- [scheduling-1] net.artemkv.marvelserver.LocalDbUpdater  : Done updating creators from Marvel
 ```
