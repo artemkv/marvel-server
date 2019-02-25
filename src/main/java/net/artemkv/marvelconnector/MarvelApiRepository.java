@@ -44,9 +44,7 @@ public class MarvelApiRepository {
     public GetCreatorsResult getCreators(Date modifiedSince, int offset)
         throws IntegrationException, ExternalServiceUnavailableException, TimeoutException {
         try {
-            Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss-SSSX")
-                .create();
+            Gson gson = new GsonBuilder().create();
 
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(properties.getConnectionTimeout(), TimeUnit.SECONDS)

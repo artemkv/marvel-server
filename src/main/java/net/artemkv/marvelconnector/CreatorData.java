@@ -2,10 +2,7 @@ package net.artemkv.marvelconnector;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -21,20 +18,6 @@ class CreatorData implements Creator {
     private static class SeriesData {
         @JsonProperty("available")
         private int available;
-    }
-
-    private static final DateFormat formatter;
-    // This is the earliest date you can observe when using modifiedSince filter on Marvel API
-    // So any date before this one will be considered null
-    // This will allow to retrieve all the creators, even if the date is messed up
-    private static final Date earliestDateCanFilterBy;
-    static {
-        formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        try {
-            earliestDateCanFilterBy = formatter.parse("2007-01-01T00:00:00-0500");
-        } catch (ParseException e) {
-            throw new IllegalStateException("Impossible");
-        }
     }
 
     private int id;
@@ -99,8 +82,8 @@ class CreatorData implements Creator {
 
         if (modified != null) {
             try {
-                modifiedDate = formatter.parse(modified);
-                if (modifiedDate.before(earliestDateCanFilterBy)) {
+                modifiedDate = Constants.MARVEL_API_DATE_FORMATTER.parse(modified);
+                if (modifiedDate.before(Constants.MARVEL_API_EARLIEST_FILTERABLE_DATE)) {
                     modifiedDate = null;
                 }
             } catch (ParseException e) {
