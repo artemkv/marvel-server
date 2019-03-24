@@ -92,6 +92,7 @@ docker run \
 * H2 Database Engine (Java SQL database)
 * Retrofit (type-safe HTTP client for Android and Java)
 * Retrofit Converter: Gson (Gson converter for Retrofit)
+* Retrofit RxJava adapter
 
 ### Maven plugins
 
@@ -120,11 +121,7 @@ marvelapi.public_key - the public key required to connect to Marvel Comics API
 marvelapi.private_key - the private key required to connect to Marvel Comics API
 marvelapi.connection_timeout - the connection timeout when connecting to Marvel Comics API (60)
 marvelapi.read_timeout - the read timeout when connecting to Marvel Comics API (60)
-```
-
-marvelservice.properties
-```
-marvelservice.retries - the number of retries for a single call when trying to retrieve data from Marvel Comics API (3)
+marvelapi.retries - the number of retries for a single call when trying to retrieve data from Marvel Comics API (3)
 ```
 
 ## Environment variables:

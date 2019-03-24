@@ -14,6 +14,7 @@ public class MarvelApiProperties {
     private String privateKey;
     private int connectionTimeout = 20;
     private int readTimeout = 20;
+    private int retries = 3;
 
     public String getUrl() {
         return url;
@@ -61,5 +62,13 @@ public class MarvelApiProperties {
 
     public void setReadTimeout(int readTimeout) {
         this.readTimeout = readTimeout;
+    }
+
+    public int getRetries() {
+        return retries;
+    }
+
+    public void setRetries(int retries) {
+        this.retries = retries;
     }
 }

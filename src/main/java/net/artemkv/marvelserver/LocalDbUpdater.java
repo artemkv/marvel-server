@@ -1,5 +1,7 @@
 package net.artemkv.marvelserver;
 
+import io.reactivex.schedulers.Schedulers;
+import net.artemkv.marvelconnector.MarvelApiRepository;
 import net.artemkv.marvelserver.domain.CreatorModel;
 import net.artemkv.marvelserver.domain.UpdateStatus;
 import net.artemkv.marvelconnector.Creator;
@@ -18,20 +20,25 @@ import java.util.Date;
 @Component
 @Scope("singleton")
 class LocalDbUpdater {
+    private static class SyncDateContainer {
+        public Date lastSyncDate;
+        public Date newLastSyncDate;
+    }
+
     private static final Logger logger = LoggerFactory.getLogger(LocalDbUpdater.class);
 
     LocalDatabaseState localDatabaseState = LocalDatabaseState.OUT_OF_DATE;
 
-    private MarvelService marvelApiService;
-    private CreatorRepository creatorRepository;
-    private UpdateStatusRepository updateStatusRepository;
+    private final MarvelApiRepository marvelApiRepository;
+    private final CreatorRepository creatorRepository;
+    private final UpdateStatusRepository updateStatusRepository;
 
     public LocalDbUpdater(
-        MarvelService marvelApiService,
+        MarvelApiRepository marvelApiRepository,
         CreatorRepository creatorRepository,
         UpdateStatusRepository updateStatusRepository) {
-        if (marvelApiService == null) {
-            throw new IllegalArgumentException("marvelApiService");
+        if (marvelApiRepository == null) {
+            throw new IllegalArgumentException("marvelApiRepository");
         }
         if (creatorRepository == null) {
             throw new IllegalArgumentException("creatorRepository");
@@ -40,7 +47,7 @@ class LocalDbUpdater {
             throw new IllegalArgumentException("updateStatusRepository");
         }
 
-        this.marvelApiService = marvelApiService;
+        this.marvelApiRepository = marvelApiRepository;
         this.creatorRepository = creatorRepository;
         this.updateStatusRepository = updateStatusRepository;
     }
@@ -51,51 +58,47 @@ class LocalDbUpdater {
 
         logger.debug("Updating creators from Marvel...");
         try {
-            Date lastSyncDate = updateStatus.getLastSyncDate();
-            Date newLastSyncDate = updateStatus.getLastSyncDate();
-            boolean hasMore = true;
-            int offset = 0;
-            while (hasMore) {
-                GetCreatorsResult result = marvelApiService.getCreators(lastSyncDate, offset);
-                for (Creator creator : result.getCreators()) {
-                    logger.trace("Found creator: " + creator.getFullName());
-                    // save into local db
-                    CreatorModel creatorModel = new CreatorModel(creator);
-                    creatorRepository.save(creatorModel);
-                    // update last synced date
-                    if (creator.getModified() != null &&
-                        (newLastSyncDate == null || creator.getModified().after(newLastSyncDate))) {
-                        // done with that date, save it
-                        if (newLastSyncDate != null) {
-                            updateStatus.setLastSyncDate(newLastSyncDate);
+            SyncDateContainer syncDateContainer = new SyncDateContainer();
+            syncDateContainer.lastSyncDate = updateStatus.getLastSyncDate();
+            syncDateContainer.newLastSyncDate = updateStatus.getLastSyncDate();
+
+            marvelApiRepository.getCreators(syncDateContainer.lastSyncDate)
+                .subscribe(
+                    creator -> {
+                        logger.trace("Found creator: " + creator.getFullName());
+                        // save into local db
+                        CreatorModel creatorModel = new CreatorModel(creator);
+                        creatorRepository.save(creatorModel);
+                        // update last synced date
+                        if (creator.getModified() != null &&
+                            (syncDateContainer.newLastSyncDate == null ||
+                                creator.getModified().after(syncDateContainer.newLastSyncDate))) {
+                            // done with that date, save it
+                            if (syncDateContainer.newLastSyncDate != null) {
+                                updateStatus.setLastSyncDate(syncDateContainer.newLastSyncDate);
+                                updateStatusRepository.save(updateStatus);
+                            }
+                            // use the newer value
+                            syncDateContainer.newLastSyncDate = creator.getModified();
+                        }
+                    }
+                    , e -> {
+                        logger.error("Failed to update creators from Marvel", e);
+                    }
+                    , () -> {
+                        logger.debug("Done updating creators from Marvel");
+
+                        // save last sync date - final value
+                        if (syncDateContainer.newLastSyncDate != null) {
+                            updateStatus.setLastSyncDate(syncDateContainer.newLastSyncDate);
                             updateStatusRepository.save(updateStatus);
                         }
-                        // use the newer value
-                        newLastSyncDate = creator.getModified();
-                    }
-                }
-                hasMore = result.hasMore();
-                offset = result.getNewOffset();
-                if (hasMore) {
-                    logger.debug("Marvel has more creators starting from " + offset);
-                } else {
-                    logger.debug("Done updating creators from Marvel");
-                }
-            }
-            // save last sync date - final value
-            if (newLastSyncDate != null) {
-                updateStatus.setLastSyncDate(newLastSyncDate);
-                updateStatusRepository.save(updateStatus);
-            }
 
-            setLocalDatabaseState(LocalDatabaseState.UP_TO_DATE);
+                        // done with sync
+                        setLocalDatabaseState(LocalDatabaseState.UP_TO_DATE);
+                    });
+
         } catch (IntegrationException e) {
-            logger.error("Failed to update creators from Marvel", e);
-            throw new IllegalStateException("Failed to update creators from Marvel");
-        } catch (TimeoutException e) {
-            logger.error("Failed to update creators from Marvel", e);
-            throw new IllegalStateException("Failed to update creators from Marvel");
-        } catch (ExternalServiceUnavailableException e) {
             logger.error("Failed to update creators from Marvel", e);
             throw new IllegalStateException("Failed to update creators from Marvel");
         }

@@ -109,4 +109,9 @@ class CreatorData implements Creator {
     public int getSeriesTotal() {
         return series.available;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%d (%s %s)", getId(), getFirstName(), getLastName());
+    }
 }

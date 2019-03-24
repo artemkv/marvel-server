@@ -1,7 +1,7 @@
 package net.artemkv.marvelserver;
 
 import net.artemkv.marvelserver.stubs.CreatorRepositoryStub;
-import net.artemkv.marvelserver.stubs.MarvelServiceStub;
+import net.artemkv.marvelserver.stubs.MarvelApiRepositoryStub;
 import net.artemkv.marvelserver.stubs.UpdateStatusRepositoryStub;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -10,11 +10,12 @@ public class LocalDbUpdaterTests {
     @Test
     public void testLocalDbUpdate() {
         // Arrange
+        MarvelApiRepositoryStub marvelApiRepository = new MarvelApiRepositoryStub();
         CreatorRepositoryStub creatorRepository = new CreatorRepositoryStub();
         UpdateStatusRepositoryStub updateStatusRepository = new UpdateStatusRepositoryStub();
 
         LocalDbUpdater updater = new LocalDbUpdater(
-            new MarvelServiceStub(),
+            marvelApiRepository,
             creatorRepository,
             updateStatusRepository);
 
