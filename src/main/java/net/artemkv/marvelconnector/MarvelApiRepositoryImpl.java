@@ -60,9 +60,7 @@ public class MarvelApiRepositoryImpl implements MarvelApiRepository {
             MarvelApi api = retrofit.create(MarvelApi.class);
 
             return getCreatorsLazy(
-                api, properties.getPageSize(), 0,
-                ts, apiKey, hash,
-                modifiedSince);
+                api, properties.getPageSize(), 0, ts, apiKey, hash, modifiedSince);
         } catch (NoSuchAlgorithmException e) {
             throw new IntegrationException("Could not build MD5 hash for accessing Marvel API", e);
         } catch (UnsupportedEncodingException e) {
@@ -70,18 +68,13 @@ public class MarvelApiRepositoryImpl implements MarvelApiRepository {
         }
     }
 
-    private Observable<Creator> getCreatorsLazy(
-        MarvelApi api,
-        int limit, int offset,
-        String ts, String apiKey, String hash,
-        Date modifiedSince) {
+    private Observable<Creator> getCreatorsLazy(MarvelApi api,
+                                                int limit, int offset,
+                                                String ts, String apiKey, String hash,
+                                                Date modifiedSince) {
         return Observable.defer(() ->
             api
-                .listCreators(
-                    limit, offset,
-                    ts, apiKey, hash,
-                    "modified", modifiedSince)
-                .subscribeOn(Schedulers.io()) // Now sure this is truly needed if we already using async calls
+                .listCreators(limit, offset, ts, apiKey, hash, "modified", modifiedSince)
                 .onErrorResumeNext(this::convertExceptions)
                 .retry(this::canRetry)
                 .flatMap(wrapper -> {
@@ -90,9 +83,7 @@ public class MarvelApiRepositoryImpl implements MarvelApiRepository {
                     if (offset + limit < wrapper.getData().getTotal()) {
                         observable = observable.concatWith(
                             getCreatorsLazy(
-                                api, limit, offset + limit,
-                                ts, apiKey, hash,
-                                modifiedSince));
+                                api, limit, offset + limit, ts, apiKey, hash, modifiedSince));
                     }
                     return observable;
                 }));
