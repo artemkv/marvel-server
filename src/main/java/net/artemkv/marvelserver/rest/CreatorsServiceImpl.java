@@ -3,8 +3,11 @@ package net.artemkv.marvelserver.rest;
 import net.artemkv.marvelserver.domain.CreatorModel;
 import net.artemkv.marvelserver.domain.NoteModel;
 import net.artemkv.marvelserver.repositories.CreatorRepository;
+import net.artemkv.marvelserver.specifications.CreatorWithFullName;
+import net.artemkv.marvelserver.specifications.CreatorWithModifiedDate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -29,28 +32,11 @@ class CreatorsServiceImpl implements CreatorsService {
 
     @Override
     public GetListResponse<CreatorDto> getCreators(String fullName, Date modifiedSince, Pageable pageable) {
-        boolean filterByFullName = false;
-        if (fullName != null && fullName.trim().length() > 0) {
-            filterByFullName = true;
-        }
+        Specification<CreatorModel> specification =
+            new CreatorWithFullName(fullName)
+            .and(new CreatorWithModifiedDate(modifiedSince));
 
-        boolean filterByModified = false;
-        if (modifiedSince != null && modifiedSince.after(new Date(Long.MIN_VALUE))) {
-            filterByModified = true;
-        }
-
-        // TODO: to be revised according to https://blog.tratif.com/2017/11/23/effective-restful-search-api-in-spring/
-        Page<CreatorModel> page = null;
-        if (filterByFullName && filterByModified) {
-            page = creatorRepository
-                .findByFullNameLikeIgnoreCaseAndModifiedGreaterThan("%" + fullName + "%", modifiedSince, pageable);
-        } else if (filterByFullName) {
-            page = creatorRepository.findByFullNameLikeIgnoreCase("%" + fullName + "%", pageable);
-        } else if (filterByModified) {
-            page = creatorRepository.findByModifiedGreaterThan(modifiedSince, pageable);
-        } else {
-            page = creatorRepository.findAll(pageable);
-        }
+        Page<CreatorModel> page = creatorRepository.findAll(specification, pageable);
 
         ArrayList<CreatorDto> creators = new ArrayList<>();
         page.forEach(x -> creators.add(new CreatorDto(x)));
