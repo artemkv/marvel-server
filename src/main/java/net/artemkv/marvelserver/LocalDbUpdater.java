@@ -1,5 +1,6 @@
 package net.artemkv.marvelserver;
 
+import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
 import net.artemkv.marvelconnector.MarvelApiRepository;
 import net.artemkv.marvelserver.domain.CreatorModel;
@@ -16,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import java.util.Date;
+import java.util.Optional;
 
 @Component
 @Scope("singleton")
@@ -63,23 +65,30 @@ class LocalDbUpdater {
             syncDateContainer.newLastSyncDate = updateStatus.getLastSyncDate();
 
             marvelApiRepository.getCreators(syncDateContainer.lastSyncDate)
+                .concatMap(creator -> Observable.fromCallable(() -> {
+                    logger.trace("Found creator: " + creator.getFullName());
+                    CreatorModel creatorModel = new CreatorModel(creator);
+                    // save into local db
+                    creatorRepository.save(creatorModel);
+                    return creator.getModified() != null ?
+                        Optional.of(creator.getModified()) :
+                        Optional.<Date>empty();
+                }).subscribeOn(Schedulers.io()))
+                .filter(modified -> modified.isPresent())
+                .map(modified -> modified.get())
+                .distinctUntilChanged()
                 .subscribe(
-                    creator -> {
-                        logger.trace("Found creator: " + creator.getFullName());
-                        // save into local db
-                        CreatorModel creatorModel = new CreatorModel(creator);
-                        creatorRepository.save(creatorModel);
+                    modified -> {
                         // update last synced date
-                        if (creator.getModified() != null &&
-                            (syncDateContainer.newLastSyncDate == null ||
-                                creator.getModified().after(syncDateContainer.newLastSyncDate))) {
+                        if (syncDateContainer.newLastSyncDate == null ||
+                            modified.after(syncDateContainer.newLastSyncDate)) {
                             // done with that date, save it
                             if (syncDateContainer.newLastSyncDate != null) {
                                 updateStatus.setLastSyncDate(syncDateContainer.newLastSyncDate);
                                 updateStatusRepository.save(updateStatus);
                             }
                             // use the newer value
-                            syncDateContainer.newLastSyncDate = creator.getModified();
+                            syncDateContainer.newLastSyncDate = modified;
                         }
                     }
                     , e -> {
